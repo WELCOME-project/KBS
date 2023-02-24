@@ -1,0 +1,1289 @@
+@prefix : <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#> .
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix process: <http://www.daml.org/services/owl-s/1.1/Process.owl> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix profile: <http://www.daml.org/services/owl-s/1.1/Profile.owl> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix service: <http://www.daml.org/services/owl-s/1.1/Service.owl> .
+
+:isTranscriptionOfContainer a owl:ObjectProperty;
+  rdfs:domain :Transcription;
+  rdfs:range :SpeechActContainer .
+
+:SpeechActContainer a owl:Class;
+  rdfs:subClassOf :Dialogue;
+  rdfs:label "SpeechActContainer" .
+
+:ContainerTranscription a owl:Class;
+  rdfs:subClassOf :Transcription .
+
+:hasAge a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPersonalInformation .
+
+:hasPersonalInformation a owl:ObjectProperty .
+
+:hasCity a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPhysicalAddress;
+  rdfs:range :City .
+
+:hasPhysicalAddress a owl:ObjectProperty;
+  rdfs:subPropertyOf owl:topObjectProperty;
+  rdfs:domain :Person, :Organisation;
+  rdfs:range :PhysicalAddress .
+
+:City a owl:Class;
+  rdfs:subClassOf :PhysicalAddress .
+
+:hasClosingTime a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasTemporalInformation .
+
+:hasTemporalInformation a owl:ObjectProperty;
+  rdfs:range :Temporal .
+
+:hasCountry a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPhysicalAddress;
+  rdfs:range :Country .
+
+:Country a owl:Class;
+  rdfs:subClassOf :PhysicalAddress .
+
+:hasCountryOfOrigin a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPersonalInformation;
+  rdfs:range :Country;
+  owl:inverseOf :isCountryOriginOf .
+
+:isCountryOriginOf a owl:ObjectProperty;
+  rdfs:subPropertyOf :isPersonalInformationOf .
+
+:hasDIP a owl:ObjectProperty;
+  rdfs:domain :SpeechActContainer;
+  rdfs:range :DIP .
+
+:DIP a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:hasDIPAge a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPParameter a owl:ObjectProperty .
+
+:hasDIPConfirmCommunication a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPConfirmLanguage a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPConfirmedCommunciation a owl:ObjectProperty;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:hasDIPCountryOfOrigin a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPGreet a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformDocumentsNeeded a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformLabourModule a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformLabourModuleAddress a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformLabourModuleHours a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformLanguageModule a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformLanguageModuleAddress a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformLanguageModuleHours a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformMessage a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformNeedRegistration a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformOfficeHours a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformOverview a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformResumeApplication a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformSocietyModule a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformSocietyModuleAddress a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInformSocietyModuleHours a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPInstantiation a owl:ObjectProperty .
+
+:hasDIPObtainBirthday a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainCityOfBirth a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainCountryOfBirth a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainEMailNotifications a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainEmail a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainFirstSurname a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainGender a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainIDCountry a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainIDNumber a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainIDType a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainInterest a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainLandline a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainMobilePhone a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainName a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainNationality a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainNotificationPreferences a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainRegistrationStatus a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainResidenceAddressCity a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainResidenceAddressNumber a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainResidenceAddressStreet a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainSMSNotifications a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainSecondSurname a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainStreetName a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainStreetNumber a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPObtainStreetType a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPTimeArrivalCurrentResidence a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDIPinformOfficeAddress a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasDIPParameter .
+
+:hasDetectedEntity a owl:ObjectProperty;
+  rdfs:domain :SpeechActContainer;
+  rdfs:range :DetectedEntity .
+
+:DetectedEntity a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:hasDetectedRelation a owl:ObjectProperty;
+  rdfs:domain :SpeechActContainer;
+  rdfs:range :DetectedRelation .
+
+:DetectedRelation a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:hasDetectedRole a owl:ObjectProperty .
+
+:hasDialogueTurn a owl:ObjectProperty;
+  rdfs:domain :DialogueSession;
+  rdfs:range :DialogueTurn .
+
+:DialogueSession a owl:Class;
+  rdfs:subClassOf :Dialogue .
+
+:DialogueTurn a owl:Class;
+  rdfs:subClassOf :Dialogue, _:node181 .
+
+:hasDialogueUser a owl:ObjectProperty;
+  rdfs:domain :DialogueSession;
+  rdfs:range :DialogueUser;
+  owl:inverseOf :isInvolvedInDialogueSession .
+
+:isInvolvedInDialogueSession a owl:ObjectProperty;
+  rdfs:domain :DialogueUser;
+  rdfs:range :DialogueSession .
+
+:DialogueUser a owl:Class;
+  rdfs:subClassOf :Person .
+
+:hasFirstName a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPersonalInformation;
+  rdfs:domain :Person;
+  owl:inverseOf :isFirstNameOf .
+
+:isFirstNameOf a owl:ObjectProperty;
+  rdfs:subPropertyOf :isPersonalInformationOf .
+
+:Person a owl:Class;
+  rdfs:isDefinedBy "http://xmlns.com/foaf/0.1" .
+
+:hasHostingInfo a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPersonalInformation;
+  owl:inverseOf :isHostingInfoOf .
+
+:isHostingInfoOf a owl:ObjectProperty;
+  rdfs:subPropertyOf :isPersonalInformationOf .
+
+:hasInferredSpeechActObject a owl:ObjectProperty;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:hasInfoForDMS a owl:ObjectProperty .
+
+:hasInputRDFContents a owl:ObjectProperty;
+  rdfs:domain :Slot .
+
+:Slot a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:hasLastName a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPersonalInformation;
+  rdfs:domain :Person;
+  owl:inverseOf :isLastNameOf .
+
+:isLastNameOf a owl:ObjectProperty;
+  rdfs:subPropertyOf :isPersonalInformationOf .
+
+:hasMobilePhone a owl:ObjectProperty;
+  rdfs:domain :Person, :Organisation .
+
+:Organisation a owl:Class .
+
+:hasName a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPersonalInformation;
+  owl:inverseOf :isNameOf .
+
+:isNameOf a owl:ObjectProperty;
+  rdfs:subPropertyOf :isPersonalInformationOf .
+
+:hasNextContainer a owl:ObjectProperty;
+  rdfs:domain :SpeechActContainer;
+  rdfs:range :SpeechActContainer .
+
+:hasNextDIP a owl:ObjectProperty .
+
+:hasOntologyType a owl:ObjectProperty;
+  rdfs:domain :Slot .
+
+:hasOpeningTime a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasTemporalInformation .
+
+:hasOperatingDay a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasTemporalInformation .
+
+:hasParticipant a owl:ObjectProperty .
+
+:PhysicalAddress a owl:Class;
+  rdfs:subClassOf :ContactInformation .
+
+:hasPredicateRelation a owl:ObjectProperty .
+
+:hasRequestType a owl:ObjectProperty;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:hasSlot a owl:ObjectProperty;
+  rdfs:domain :DIP;
+  rdfs:range :Slot .
+
+:hasSlotTemplate a owl:ObjectProperty .
+
+:hasSpeechActAgent a owl:ObjectProperty;
+  rdfs:range :DialogueUser .
+
+:hasSpeechActContainer a owl:ObjectProperty;
+  rdfs:domain :DialogueTurn;
+  rdfs:range :SpeechActContainer .
+
+:hasSpeechActObject a owl:ObjectProperty .
+
+:hasSpeechActType a owl:ObjectProperty;
+  rdfs:domain :SpeechActContainer;
+  rdfs:range :SpeechAct .
+
+:SpeechAct a owl:Class;
+  rdfs:subClassOf :DialogueCommunication, _:node184;
+  rdfs:comment "" .
+
+:hasStatus a owl:ObjectProperty;
+  rdfs:domain :DIP, :Slot;
+  rdfs:range :DIPStatus .
+
+:DIPStatus a owl:Class;
+  rdfs:subClassOf :DIPParameters .
+
+:hasStayingPeriod a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasTemporalInformation .
+
+:hasStreetName a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPhysicalAddress;
+  rdfs:range :StreetName .
+
+:StreetName a owl:Class;
+  rdfs:subClassOf :PhysicalAddress, :AddressInfo .
+
+:hasStreetNumber a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPhysicalAddress;
+  rdfs:range :StreetNumber .
+
+:StreetNumber a owl:Class;
+  rdfs:subClassOf :PhysicalAddress, :AddressInfo .
+
+:hasSystemResponse a owl:ObjectProperty;
+  rdfs:domain :DialogueUserTurn;
+  rdfs:range :DialogueSystemTurn;
+  owl:inverseOf :repliesToUserResponse .
+
+:repliesToUserResponse a owl:ObjectProperty;
+  rdfs:subPropertyOf owl:topObjectProperty;
+  rdfs:domain :DialogueSystemTurn;
+  rdfs:range :DialogueUserTurn .
+
+:DialogueUserTurn a owl:Class;
+  rdfs:subClassOf :DialogueTurn .
+
+:DialogueSystemTurn a owl:Class;
+  rdfs:subClassOf :DialogueTurn .
+
+:hasTelephone a owl:ObjectProperty;
+  rdfs:domain :Person, :Organisation .
+
+:Temporal a owl:Class;
+  rdfs:subClassOf :ContextInformation .
+
+:hasTurnTranscription a owl:ObjectProperty;
+  rdfs:domain :DialogueTurn;
+  rdfs:range :TurnTranscrption;
+  owl:inverseOf :isTranscriptionOfTurn .
+
+:isTranscriptionOfTurn a owl:ObjectProperty .
+
+:TurnTranscrption a owl:Class;
+  rdfs:subClassOf :Transcription .
+
+:hasWebpage a owl:ObjectProperty;
+  rdfs:domain :Webpage .
+
+:Webpage a owl:Class;
+  rdfs:subClassOf :InternetAddress .
+
+:hasZipCode a owl:ObjectProperty;
+  rdfs:subPropertyOf :hasPhysicalAddress;
+  rdfs:range :ZipCode .
+
+:ZipCode a owl:Class;
+  rdfs:subClassOf :PhysicalAddress .
+
+:hostedBy a owl:ObjectProperty .
+
+:isPersonalInformationOf a owl:ObjectProperty .
+
+:isEntity1 a owl:ObjectProperty;
+  rdfs:domain :DetectedRelation;
+  rdfs:range :DetectedEntity .
+
+:isEntity2 a owl:ObjectProperty .
+
+:isIDof a owl:ObjectProperty;
+  rdfs:subPropertyOf owl:topObjectProperty .
+
+:isPhysicalAddressOf a owl:ObjectProperty;
+  rdfs:subPropertyOf :isPersonalInformationOf .
+
+:isPovidedBy a owl:ObjectProperty;
+  owl:inverseOf :offersCourse .
+
+:offersCourse a owl:ObjectProperty .
+
+:isRegistered a owl:ObjectProperty;
+  rdfs:subPropertyOf owl:topObjectProperty;
+  rdfs:domain <http://www.daml.org/services/owl-s/1.1/Service.owl#Service> .
+
+:isRelatedToUser a owl:ObjectProperty;
+  rdfs:domain <http://www.daml.org/services/owl-s/1.1/Service.owl#Service>;
+  rdfs:range :DialogueUser .
+
+:isStayingPeriodOf a owl:ObjectProperty .
+
+:Transcription a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:DIPId a owl:DatatypeProperty .
+
+:confidenceScore a owl:DatatypeProperty;
+  rdfs:domain :Slot;
+  rdfs:range xsd:integer .
+
+:coordinates a owl:DatatypeProperty;
+  rdfs:subPropertyOf owl:topDataProperty;
+  rdfs:domain :PhysicalAddress, :Location;
+  rdfs:label "coordinates" .
+
+:Location a owl:Class;
+  rdfs:subClassOf :ContextInformation .
+
+:fromPeriod a owl:DatatypeProperty;
+  rdfs:subPropertyOf owl:topDataProperty .
+
+:hasAltAddress a owl:DatatypeProperty .
+
+:hasAltCity a owl:DatatypeProperty .
+
+:hasAltClosingTime a owl:DatatypeProperty .
+
+:hasAltName a owl:DatatypeProperty .
+
+:hasAltOpeningTime a owl:DatatypeProperty .
+
+:hasAltPhone a owl:DatatypeProperty .
+
+:hasAltStreetNumber a owl:DatatypeProperty .
+
+:hasAltWebPage a owl:DatatypeProperty .
+
+:hasAltZipCode a owl:DatatypeProperty .
+
+:hasContainerId a owl:DatatypeProperty;
+  rdfs:domain :SpeechActContainer .
+
+:hasCourseName a owl:DatatypeProperty .
+
+:hasDIPLanguageScore a owl:DatatypeProperty .
+
+:hasDipType a owl:DatatypeProperty .
+
+:hasDuration a owl:DatatypeProperty .
+
+:hasEntityAnchor a owl:DatatypeProperty .
+
+:hasEntityConfidence a owl:DatatypeProperty .
+
+:hasEntityId a owl:DatatypeProperty .
+
+:hasEntityLink a owl:DatatypeProperty .
+
+:hasEntityType a owl:DatatypeProperty .
+
+:hasNumberAttempts a owl:DatatypeProperty;
+  rdfs:domain :Slot;
+  rdfs:range xsd:integer .
+
+:hasNumberHours a owl:DatatypeProperty .
+
+:hasRelationId a owl:DatatypeProperty .
+
+:hasTimestamp a owl:DatatypeProperty .
+
+:hasUserId a owl:DatatypeProperty;
+  rdfs:domain :DialogueUser .
+
+:heldRoleFrom a owl:DatatypeProperty;
+  rdfs:subPropertyOf :fromPeriod;
+  rdfs:range xsd:integer .
+
+:heldRoleTo a owl:DatatypeProperty;
+  rdfs:subPropertyOf :toPeriod;
+  rdfs:range xsd:integer .
+
+:toPeriod a owl:DatatypeProperty;
+  rdfs:subPropertyOf owl:topDataProperty .
+
+:isActive a owl:DatatypeProperty;
+  rdfs:domain :DIP;
+  rdfs:range xsd:boolean .
+
+:isActiveSession a owl:DatatypeProperty;
+  rdfs:domain :DialogueSession;
+  rdfs:range xsd:boolean .
+
+:isAdult a owl:DatatypeProperty;
+  rdfs:range xsd:boolean .
+
+:isLastContainer a owl:DatatypeProperty;
+  rdfs:domain :SpeechActContainer;
+  rdfs:range xsd:boolean .
+
+:isOptional a owl:DatatypeProperty;
+  rdfs:domain :Slot .
+
+:isUnaccompanied a owl:DatatypeProperty;
+  rdfs:range xsd:boolean .
+
+:lat a owl:DatatypeProperty;
+  rdfs:subPropertyOf :coordinates;
+  rdfs:range xsd:double;
+  rdfs:label "latitude" .
+
+:long a owl:DatatypeProperty;
+  rdfs:subPropertyOf :coordinates;
+  rdfs:range xsd:double;
+  rdfs:label "longitude" .
+
+:timestamp a owl:DatatypeProperty .
+
+<http://www.daml.org/services/owl-s/1.1/Profile.owl#Profile> a owl:Class .
+
+:AccessCatalanTraining a owl:Class;
+  rdfs:subClassOf :Training .
+
+:Training a owl:Class;
+  rdfs:subClassOf :PersonalInformation .
+
+:AccessLabourTraining a owl:Class;
+  rdfs:subClassOf :Training .
+
+:AccessSocietyTraining a owl:Class;
+  rdfs:subClassOf :Training .
+
+:AccessSpanishTraining a owl:Class;
+  rdfs:subClassOf :Training .
+
+:AddressInfo a owl:Class;
+  rdfs:subClassOf :ContactInformation .
+
+:ContactInformation a owl:Class;
+  rdfs:subClassOf :Descriptors .
+
+:AsylumClaim a owl:Class;
+  rdfs:subClassOf :Other .
+
+:Other a owl:Class;
+  rdfs:subClassOf :PersonalInformation .
+
+:Birthday a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:Personal a owl:Class;
+  rdfs:subClassOf :PersonalInformation .
+
+:Building a owl:Class;
+  rdfs:subClassOf :PhysicalAddress .
+
+:BuildingName a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:BuildingType a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:CatalanCourse a owl:Class;
+  rdfs:subClassOf :Training .
+
+:CityOfBirth a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:CompletionYear a owl:Class;
+  rdfs:subClassOf :Education .
+
+:Education a owl:Class;
+  rdfs:subClassOf :PersonalInformation .
+
+:Descriptors a owl:Class .
+
+:ContextInformation a owl:Class;
+  rdfs:subClassOf :Descriptors .
+
+:Coordinates a owl:Class;
+  rdfs:subClassOf :ContactInformation .
+
+:CountryOfBirth a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:Course a owl:Class;
+  rdfs:subClassOf :Education .
+
+:CourseInstitution a owl:Class;
+  rdfs:subClassOf :Education .
+
+:CourseSociety a owl:Class;
+  rdfs:subClassOf :Training .
+
+:DialogueCommunication a owl:Class .
+
+:DIPParameters a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:DIPType a owl:Class;
+  rdfs:subClassOf :DIPParameters .
+
+:Day a owl:Class;
+  rdfs:subClassOf :Temporal .
+
+:Dialogue a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:DoorNumber a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:Duration a owl:Class;
+  rdfs:subClassOf :Education .
+
+:E-mail a owl:Class;
+  rdfs:subClassOf :Personal, :InternetAddress .
+
+:InternetAddress a owl:Class;
+  rdfs:subClassOf :ContactInformation .
+
+:E-mailNotification a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:PersonalInformation a owl:Class;
+  rdfs:subClassOf :Descriptors .
+
+:Entrance a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:FirstSurname a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:FloorNumber a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:Gender a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:GovermentalOrganisation a owl:Class;
+  rdfs:subClassOf :Organisation .
+
+:HostingInformation a owl:Class;
+  rdfs:subClassOf :Descriptors .
+
+:IDCountry a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:IDNumber a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:IDType a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:Illiteracy a owl:Class;
+  rdfs:subClassOf :Other .
+
+:InterestRegistration a owl:Class .
+
+:KnowledgeCatalan a owl:Class;
+  rdfs:subClassOf :Training .
+
+:KnowledgeLabour a owl:Class;
+  rdfs:subClassOf :Training .
+
+:KnowledgeSociety a owl:Class;
+  rdfs:subClassOf :Training .
+
+:KnowledgeSpanish a owl:Class;
+  rdfs:subClassOf :Training .
+
+:LabourMarketCourses a owl:Class;
+  rdfs:subClassOf :Training .
+
+:LabourModule a owl:Class;
+  rdfs:subClassOf :Modules .
+
+:Modules a owl:Class .
+
+:Landline a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:Language a owl:Class .
+
+:LanguageModule a owl:Class;
+  rdfs:subClassOf :Modules .
+
+:LearningHandicap a owl:Class;
+  rdfs:subClassOf :Other .
+
+:MaritalStatus a owl:Class;
+  rdfs:subClassOf :Other .
+
+:MobilePhone a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:Mobile_phone_number a owl:Class;
+  rdfs:subClassOf :PhysicalAddress .
+
+:Municipality a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:Name a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:Nationality a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:NotificationPreferences a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:Office a owl:Class;
+  rdfs:subClassOf :GovermentalOrganisation .
+
+:Participant a owl:Class;
+  rdfs:subClassOf :DialogueCommunication, _:node182, _:node183 .
+
+:Role a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+:PlannerRequest a owl:Class;
+  rdfs:subClassOf :Request .
+
+:Request a owl:Class .
+
+:PostCode a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:PreviousResidenceCatalonia a owl:Class;
+  rdfs:subClassOf :Other .
+
+:PreviousResidenceOther a owl:Class;
+  rdfs:subClassOf :Other .
+
+:PreviousResidenceSpain a owl:Class;
+  rdfs:subClassOf :Other .
+
+:Province a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:Registered a owl:Class .
+
+:RegistrationOffice a owl:Class;
+  rdfs:subClassOf :Office .
+
+:RegistrationYear a owl:Class;
+  rdfs:subClassOf :Other .
+
+:SMSNotification a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:SecondSurname a owl:Class;
+  rdfs:subClassOf :Personal .
+
+:ServiceRequest a owl:Class;
+  rdfs:subClassOf :Request .
+
+:SocietyModule a owl:Class;
+  rdfs:subClassOf :Modules .
+
+:SpanishCourse a owl:Class;
+  rdfs:subClassOf :Training .
+
+:SpatialLocation a owl:Class;
+  rdfs:subClassOf :Location;
+  rdfs:comment "Spatial information is the information of the physical address. Due to this, this is associated with an address name, number, city, country and zip code." .
+
+:StayingPeriod a owl:Class;
+  rdfs:subClassOf :Temporal .
+
+:StreetType a owl:Class;
+  rdfs:subClassOf :AddressInfo .
+
+:SystemDemand a owl:Class;
+  rdfs:subClassOf :DIPType .
+
+:SystemInfo a owl:Class;
+  rdfs:subClassOf :DIPType .
+
+:SystemLanguage a owl:Class;
+  rdfs:subClassOf :Language .
+
+:Telephone_number a owl:Class;
+  rdfs:subClassOf :PhysicalAddress .
+
+:Time a owl:Class;
+  rdfs:subClassOf :Temporal .
+
+:TrainingOffice a owl:Class;
+  rdfs:subClassOf :Office .
+
+:YearArrival a owl:Class;
+  rdfs:subClassOf :Other .
+
+:literacy a owl:Class;
+  rdfs:subClassOf :Other .
+
+:Completed a :DIPStatus, owl:NamedIndividual .
+
+:Crta._de_Montcada a :StreetName, owl:NamedIndividual .
+
+:FailedAnalysis a :DIPStatus, owl:NamedIndividual .
+
+:Friday a :Day, owl:NamedIndividual .
+
+:Monday a :Day, owl:NamedIndividual .
+
+:OAC_Cambrils a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_Districte2 a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_Districte3 a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_Districte4 a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_Districte5 a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_Districte6 a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_Districte7 a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_DretsSocials a :RegistrationOffice, owl:NamedIndividual .
+
+:OAC_PlacaDido a :RegistrationOffice, owl:NamedIndividual .
+
+:Pending a :DIPStatus, owl:NamedIndividual .
+
+:Servei_de_primera_acollida_Terrassa a owl:NamedIndividual .
+
+:Spain a :Country, owl:NamedIndividual .
+
+:SpatialLocation_1 a :SpatialLocation, owl:NamedIndividual;
+  :hasAltAddress "Tsimiski 7" .
+
+:Syria a owl:NamedIndividual .
+
+:TCNClarifyRequest a :DIPStatus, owl:NamedIndividual .
+
+:Terrassa a :City, owl:NamedIndividual .
+
+:TopicSwitch a :DIPStatus, owl:NamedIndividual .
+
+:UnclearAnalysis a :DIPStatus, owl:NamedIndividual .
+
+:Weekday a :Day, owl:NamedIndividual .
+
+:carrer_de_san_sebastia a :StreetName, owl:NamedIndividual;
+  rdfs:label "Carrer de Sant Sebastia" .
+
+:carrer_de_valencia a :StreetName, owl:NamedIndividual;
+  rdfs:label "Carrer de Valencia" .
+
+:catalanLanguage a :Course, owl:NamedIndividual;
+  :hasCourseName "Catalan";
+  :hasNumberHours "90h" .
+
+:catalan_language a :Course, owl:NamedIndividual;
+  :hasClosingTime :21;
+  :hasOpeningTime :19;
+  :hasOperatingDay :Friday, :Monday;
+  :isPovidedBy :training_office_1 .
+
+:21 a :Time, owl:NamedIndividual .
+
+:19 a :Time, owl:NamedIndividual .
+
+:training_office_1 a :TrainingOffice, owl:NamedIndividual;
+  :hasName :col_legi_sagrat_cor;
+  :offersCourse :catalan_language .
+
+:col_legi_sagrat_cor a :Building, :TrainingOffice, owl:NamedIndividual;
+  rdfs:label "Col legi Sagrat Cor" .
+
+:first_reception_process a owl:NamedIndividual, <http://www.daml.org/services/owl-s/1.1/Process.owl#Process> .
+
+:first_reception_result a owl:NamedIndividual, <http://www.daml.org/services/owl-s/1.1/Process.owl#Result> .
+
+:hosting_center a :HostingInformation, owl:NamedIndividual .
+
+:labourCourse a :Course, owl:NamedIndividual;
+  :hasCourseName "Labour Market and Employment";
+  :hasNumberHours "15h" .
+
+:module_a a :LanguageModule, owl:NamedIndividual;
+  rdfs:label "informLanguageModule";
+  :offersCourse :catalanLanguage, :spanishLanguage;
+  :hasDipType "LanguageModule";
+  :moduleName "Languages" .
+
+:spanishLanguage a :Course, owl:NamedIndividual;
+  :hasCourseName "Spanish";
+  :hasNumberHours "90h" .
+
+:module_b a :LabourModule, owl:NamedIndividual;
+  rdfs:label "informLabourModule";
+  :offersCourse :labourCourse;
+  :hasDipType "LabourModule";
+  :moduleName "Labour market knowledge" .
+
+:module_c a :SocietyModule, owl:NamedIndividual;
+  rdfs:label "informSocietyModule";
+  :offersCourse :societyCourse;
+  :hasDipType "SocietyModule";
+  :moduleName "Catalan Society" .
+
+:societyCourse a :Course, owl:NamedIndividual;
+  :hasCourseName "Your municipality and the services you can apply for.";
+  :hasNumberHours "15h" .
+
+:physical_address_1 a :PhysicalAddress, owl:NamedIndividual;
+  rdfs:comment "";
+  :hasCity :Terrassa;
+  :hasCountry :Spain;
+  :hasStreetName :carrer_de_san_sebastia;
+  :hasStreetNumber :66 .
+
+:66 a :StreetNumber, owl:NamedIndividual .
+
+:physical_address_2 a :PhysicalAddress, owl:NamedIndividual;
+  :hasCity :Terrassa;
+  :hasCountry :Spain;
+  :hasStreetName :raval_de_montserrat;
+  :hasStreetNumber :14 .
+
+:raval_de_montserrat a :StreetName, owl:NamedIndividual;
+  rdfs:label "Raval de Montserrat" .
+
+:14 a :StreetNumber, owl:NamedIndividual .
+
+:physical_address_3 a :PhysicalAddress, owl:NamedIndividual;
+  :hasCity :Terrassa;
+  :hasCountry :Spain;
+  :hasStreetName :carrer_de_valencia;
+  :hasStreetNumber :142 .
+
+:142 a :StreetNumber, owl:NamedIndividual .
+
+:physical_address_4 a :PhysicalAddress, owl:NamedIndividual;
+  :hasCity :Terrassa;
+  :hasName :Servei_de_primera_acollida_Terrassa;
+  :hasStreetName :Crta._de_Montcada;
+  :hasStreetNumber :596;
+  :hasTelephone :937_315_982;
+  :hasWebpage <https://www.terrassa.cat/primera-acollida-ciutadania>;
+  :hasZipCode :08223 .
+
+:596 a :StreetNumber, owl:NamedIndividual .
+
+:937_315_982 a :Telephone_number, owl:NamedIndividual .
+
+<https://www.terrassa.cat/primera-acollida-ciutadania> a :Webpage, owl:NamedIndividual .
+
+:08223 a :ZipCode, owl:NamedIndividual .
+
+:registration_office_terrassa a :RegistrationOffice, owl:NamedIndividual;
+  :hasPhysicalAddress :physical_address_2;
+  :hasClosingTime :15;
+  :hasOpeningTime :9;
+  :hasOperatingDay :Weekday .
+
+:15 a :Time, owl:NamedIndividual .
+
+:9 a :Time, owl:NamedIndividual .
+
+:1 a :Time, owl:NamedIndividual .
+
+:35 a owl:NamedIndividual .
+
+:hasContainerTranscription a owl:ObjectProperty;
+  rdfs:domain :SpeechActContainer;
+  rdfs:range :ContainerTranscription;
+  owl:inverseOf :isTranscriptionOfContainer .
+
+:moduleName a owl:DatatypeProperty .
+
+:Template a owl:Class;
+  rdfs:subClassOf :DialogueCommunication .
+
+_:node181 a owl:Restriction;
+  owl:onProperty :hasDialogueTurn;
+  owl:someValuesFrom :SpeechActContainer .
+
+_:node182 a owl:Restriction;
+  owl:onProperty :hasDetectedEntity;
+  owl:allValuesFrom :DetectedEntity .
+
+_:node183 a owl:Restriction;
+  owl:onProperty :hasDetectedRole;
+  owl:allValuesFrom :Role .
+
+_:node184 a owl:Restriction;
+  owl:onProperty :hasDetectedEntity;
+  owl:allValuesFrom :DetectedEntity .
+
+_:node185 a owl:AllDisjointClasses;
+  owl:members _:node186 .
+
+_:node196 a owl:AllDisjointClasses;
+  owl:members _:node197 .
+
+_:node205 a owl:AllDisjointClasses;
+  owl:members _:node206 .
+
+_:node215 a owl:AllDisjointClasses;
+  owl:members _:node216 .
+
+_:node227 a owl:AllDisjointClasses;
+  owl:members _:node228 .
+
+_:node236 a owl:AllDisjointClasses;
+  owl:members _:node237 .
+
+_:node186 rdf:first :AsylumClaim;
+  rdf:rest _:node187 .
+
+_:node187 rdf:first :Illiteracy;
+  rdf:rest _:node188 .
+
+_:node188 rdf:first :LearningHandicap;
+  rdf:rest _:node189 .
+
+_:node189 rdf:first :MaritalStatus;
+  rdf:rest _:node190 .
+
+_:node190 rdf:first :PreviousResidenceCatalonia;
+  rdf:rest _:node191 .
+
+_:node191 rdf:first :PreviousResidenceOther;
+  rdf:rest _:node192 .
+
+_:node192 rdf:first :PreviousResidenceSpain;
+  rdf:rest _:node193 .
+
+_:node193 rdf:first :RegistrationYear;
+  rdf:rest _:node194 .
+
+_:node194 rdf:first :YearArrival;
+  rdf:rest _:node195 .
+
+_:node195 rdf:first :literacy;
+  rdf:rest rdf:nil .
+
+_:node197 rdf:first :AsylumClaim;
+  rdf:rest _:node198 .
+
+_:node198 rdf:first :LearningHandicap;
+  rdf:rest _:node199 .
+
+_:node199 rdf:first :MaritalStatus;
+  rdf:rest _:node200 .
+
+_:node200 rdf:first :PreviousResidenceCatalonia;
+  rdf:rest _:node201 .
+
+_:node201 rdf:first :PreviousResidenceOther;
+  rdf:rest _:node202 .
+
+_:node202 rdf:first :PreviousResidenceSpain;
+  rdf:rest _:node203 .
+
+_:node203 rdf:first :YearArrival;
+  rdf:rest _:node204 .
+
+_:node204 rdf:first :literacy;
+  rdf:rest rdf:nil .
+
+_:node206 rdf:first :Birthday;
+  rdf:rest _:node207 .
+
+_:node207 rdf:first :CityOfBirth;
+  rdf:rest _:node208 .
+
+_:node208 rdf:first :E-mail;
+  rdf:rest _:node209 .
+
+_:node209 rdf:first :E-mailNotification;
+  rdf:rest _:node210 .
+
+_:node210 rdf:first :FirstSurname;
+  rdf:rest _:node211 .
+
+_:node211 rdf:first :IDType;
+  rdf:rest _:node212 .
+
+_:node212 rdf:first :Landline;
+  rdf:rest _:node213 .
+
+_:node213 rdf:first :MobilePhone;
+  rdf:rest _:node214 .
+
+_:node214 rdf:first :Nationality;
+  rdf:rest rdf:nil .
+
+_:node216 rdf:first :BuildingName;
+  rdf:rest _:node217 .
+
+_:node217 rdf:first :BuildingType;
+  rdf:rest _:node218 .
+
+_:node218 rdf:first :DoorNumber;
+  rdf:rest _:node219 .
+
+_:node219 rdf:first :Entrance;
+  rdf:rest _:node220 .
+
+_:node220 rdf:first :FloorNumber;
+  rdf:rest _:node221 .
+
+_:node221 rdf:first :Municipality;
+  rdf:rest _:node222 .
+
+_:node222 rdf:first :PostCode;
+  rdf:rest _:node223 .
+
+_:node223 rdf:first :Province;
+  rdf:rest _:node224 .
+
+_:node224 rdf:first :StreetName;
+  rdf:rest _:node225 .
+
+_:node225 rdf:first :StreetNumber;
+  rdf:rest _:node226 .
+
+_:node226 rdf:first :StreetType;
+  rdf:rest rdf:nil .
+
+_:node228 rdf:first :CatalanCourse;
+  rdf:rest _:node229 .
+
+_:node229 rdf:first :CourseSociety;
+  rdf:rest _:node230 .
+
+_:node230 rdf:first :KnowledgeCatalan;
+  rdf:rest _:node231 .
+
+_:node231 rdf:first :KnowledgeLabour;
+  rdf:rest _:node232 .
+
+_:node232 rdf:first :KnowledgeSociety;
+  rdf:rest _:node233 .
+
+_:node233 rdf:first :KnowledgeSpanish;
+  rdf:rest _:node234 .
+
+_:node234 rdf:first :LabourMarketCourses;
+  rdf:rest _:node235 .
+
+_:node235 rdf:first :SpanishCourse;
+  rdf:rest rdf:nil .
+
+_:node237 rdf:first :CompletionYear;
+  rdf:rest _:node238 .
+
+_:node238 rdf:first :Course;
+  rdf:rest _:node239 .
+
+_:node239 rdf:first :CourseInstitution;
+  rdf:rest _:node240 .
+
+_:node240 rdf:first :Duration;
+  rdf:rest rdf:nil .
+
+<https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl> owl:imports
+    <http://www.daml.org/services/owl-s/1.1/Process.owl>, <http://www.daml.org/services/owl-s/1.1/Profile.owl>,
+    <http://www.daml.org/services/owl-s/1.1/Service.owl> .
+
+:initialization <http://www.ajan.de/ajan-ns#agentInitKnowledge> rdf:nil, <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl>,
+    owl:ObjectProperty, :isTranscriptionOfContainer, :SpeechActContainer, :ContainerTranscription,
+    :hasAge, :hasPersonalInformation, :hasCity, :hasPhysicalAddress, :City, :hasClosingTime,
+    :hasTemporalInformation, :hasCountry, :Country, :hasCountryOfOrigin, :isCountryOriginOf,
+    :hasDIP, :DIP, :hasDIPAge, :hasDIPParameter, :hasDIPConfirmCommunication, :hasDIPConfirmLanguage,
+    :hasDIPConfirmedCommunciation, :hasDIPCountryOfOrigin, :hasDIPGreet, :hasDIPInformDocumentsNeeded,
+    :hasDIPInformLabourModule, :hasDIPInformLabourModuleAddress, :hasDIPInformLabourModuleHours,
+    :hasDIPInformLanguageModule, :hasDIPInformLanguageModuleAddress, :hasDIPInformLanguageModuleHours,
+    :hasDIPInformMessage, :hasDIPInformNeedRegistration, :hasDIPInformOfficeHours, :hasDIPInformOverview,
+    :hasDIPInformResumeApplication, :hasDIPInformSocietyModule, :hasDIPInformSocietyModuleAddress,
+    :hasDIPInformSocietyModuleHours, :hasDIPInstantiation, :hasDIPObtainBirthday, :hasDIPObtainCityOfBirth,
+    :hasDIPObtainCountryOfBirth, :hasDIPObtainEMailNotifications, :hasDIPObtainEmail,
+    :hasDIPObtainFirstSurname, :hasDIPObtainGender, :hasDIPObtainIDCountry, :hasDIPObtainIDNumber,
+    :hasDIPObtainIDType, :hasDIPObtainInterest, :hasDIPObtainLandline, :hasDIPObtainMobilePhone,
+    :hasDIPObtainName, :hasDIPObtainNationality, :hasDIPObtainNotificationPreferences,
+    :hasDIPObtainRegistrationStatus, :hasDIPObtainResidenceAddressCity, :hasDIPObtainResidenceAddressNumber,
+    :hasDIPObtainResidenceAddressStreet, :hasDIPObtainSMSNotifications, :hasDIPObtainSecondSurname,
+    :hasDIPObtainStreetName, :hasDIPObtainStreetNumber, :hasDIPObtainStreetType, :hasDIPTimeArrivalCurrentResidence,
+    :hasDIPinformOfficeAddress, :hasDetectedEntity, :DetectedEntity, :hasDetectedRelation,
+    :DetectedRelation, :hasDetectedRole, :hasDialogueTurn, :DialogueSession, :DialogueTurn,
+    :hasDialogueUser, :isInvolvedInDialogueSession, :DialogueUser, :hasFirstName, :isFirstNameOf,
+    :Person, :hasHostingInfo, :isHostingInfoOf, :hasInferredSpeechActObject, :hasInfoForDMS,
+    :hasInputRDFContents, :Slot, :hasLastName, :isLastNameOf, :hasMobilePhone, :Organisation,
+    :hasName, :isNameOf, :hasNextContainer, :hasNextDIP, :hasOntologyType, :hasOpeningTime,
+    :hasOperatingDay, :hasParticipant, :PhysicalAddress, :hasPredicateRelation, :hasRequestType,
+    :hasSlot, :hasSlotTemplate, :hasSpeechActAgent, :hasSpeechActContainer, :hasSpeechActObject,
+    :hasSpeechActType, :SpeechAct, :hasStatus, :DIPStatus, :hasStayingPeriod, :hasStreetName,
+    :StreetName, :hasStreetNumber, :StreetNumber, :hasSystemResponse, :repliesToUserResponse,
+    :DialogueUserTurn, :DialogueSystemTurn, :hasTelephone, :Temporal, :hasTurnTranscription,
+    :isTranscriptionOfTurn, :TurnTranscrption, :hasWebpage, :Webpage, :hasZipCode, :ZipCode,
+    :hostedBy, :isPersonalInformationOf, :isEntity1, :isEntity2, :isIDof, :isPhysicalAddressOf,
+    :isPovidedBy, :offersCourse, :isRegistered, :isRelatedToUser, :isStayingPeriodOf,
+    :Transcription, :DIPId, :confidenceScore, :coordinates, :Location, :fromPeriod, :hasAltAddress,
+    :hasAltCity, :hasAltClosingTime, :hasAltName, :hasAltOpeningTime, :hasAltPhone, :hasAltStreetNumber,
+    :hasAltWebPage, :hasAltZipCode, :hasContainerId, :hasCourseName, :hasDIPLanguageScore,
+    :hasDipType, :hasDuration, :hasEntityAnchor, :hasEntityConfidence, :hasEntityId, :hasEntityLink,
+    :hasEntityType, :hasNumberAttempts, :hasNumberHours, :hasRelationId, :hasTimestamp,
+    :hasUserId, :heldRoleFrom, :heldRoleTo, :toPeriod, :isActive, :isActiveSession, :isAdult,
+    :isLastContainer, :isOptional, :isUnaccompanied, :lat, :long, :timestamp, <http://www.daml.org/services/owl-s/1.1/Profile.owl#Profile>,
+    owl:Class, :AccessCatalanTraining, :Training, :AccessLabourTraining, :AccessSocietyTraining,
+    :AccessSpanishTraining, :AddressInfo, :ContactInformation, :AsylumClaim, :Other, :Birthday,
+    :Personal, :Building, :BuildingName, :BuildingType, :CatalanCourse, :CityOfBirth,
+    :CompletionYear, :Education, :Descriptors, :ContextInformation, :Coordinates, :CountryOfBirth,
+    :Course, :CourseInstitution, :CourseSociety, :DialogueCommunication, :DIPParameters,
+    :DIPType, :Day, :Dialogue, owl:Restriction, :DoorNumber, :Duration, :E-mail, :InternetAddress,
+    :E-mailNotification, :PersonalInformation, :Entrance, :FirstSurname, :FloorNumber,
+    :Gender, :GovermentalOrganisation, :HostingInformation, :IDCountry, :IDNumber, :IDType,
+    :Illiteracy, :InterestRegistration, :KnowledgeCatalan, :KnowledgeLabour, :KnowledgeSociety,
+    :KnowledgeSpanish, :LabourMarketCourses, :LabourModule, :Modules, :Landline, :Language,
+    :LanguageModule, :LearningHandicap, :MaritalStatus, :MobilePhone, :Mobile_phone_number,
+    :Municipality, :Name, :Nationality, :NotificationPreferences, :Office, :Participant,
+    :Role, "http://xmlns.com/foaf/0.1", :PlannerRequest, :Request, :PostCode, :PreviousResidenceCatalonia,
+    :PreviousResidenceOther, :PreviousResidenceSpain, :Province, :Registered, :RegistrationOffice,
+    :RegistrationYear, :SMSNotification, :SecondSurname, :ServiceRequest, :SocietyModule,
+    :SpanishCourse, :SpatialLocation, "Spatial information is the information of the physical address. Due to this, this is associated with an address name, number, city, country and zip code.",
+    "", "SpeechActContainer", :StayingPeriod, :StreetType, :SystemDemand, :SystemInfo,
+    :SystemLanguage, :Telephone_number, :Time, :TrainingOffice, :YearArrival, :literacy,
+    :Completed, :Crta._de_Montcada, :FailedAnalysis, :Friday, :Monday, :OAC_Cambrils,
+    :OAC_Districte2, :OAC_Districte3, :OAC_Districte4, :OAC_Districte5, :OAC_Districte6,
+    :OAC_Districte7, :OAC_DretsSocials, :OAC_PlacaDido, :Pending, :Servei_de_primera_acollida_Terrassa,
+    :Spain, :SpatialLocation_1, :Syria, :TCNClarifyRequest, :Terrassa, :TopicSwitch, :UnclearAnalysis,
+    :Weekday, :carrer_de_san_sebastia, :carrer_de_valencia, :catalanLanguage, :catalan_language,
+    :21, :19, :training_office_1, :col_legi_sagrat_cor, :first_reception_process, :first_reception_result,
+    :hosting_center, :labourCourse, :module_a, :spanishLanguage, :module_b, :module_c,
+    :societyCourse, :physical_address_1, :66, :physical_address_2, :raval_de_montserrat,
+    :14, :physical_address_3, :142, :physical_address_4, :596, :937_315_982, <https://www.terrassa.cat/primera-acollida-ciutadania>,
+    :08223, :registration_office_terrassa, :15, :9, :1, :35, owl:AllDisjointClasses, :hasContainerTranscription,
+    :moduleName, :Template, _:node181, _:node182, _:node183, _:node184, _:node185, _:node186,
+    _:node187, _:node188, _:node189, _:node190, _:node191, _:node192, _:node193, _:node194,
+    _:node195, _:node196, _:node197, _:node198, _:node199, _:node200, _:node201, _:node202,
+    _:node203, _:node204, _:node205, _:node206, _:node207, _:node208, _:node209, _:node210,
+    _:node211, _:node212, _:node213, _:node214, _:node215, _:node216, _:node217, _:node218,
+    _:node219, _:node220, _:node221, _:node222, _:node223, _:node224, _:node225, _:node226,
+    _:node227, _:node228, _:node229, _:node230, _:node231, _:node232, _:node233, _:node234,
+    _:node235, _:node236, _:node237, _:node238, _:node239, _:node240 .

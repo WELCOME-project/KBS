@@ -1,0 +1,4 @@
+@prefix : <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ajan: <http://www.ajan.de/ajan-ns#> .
+

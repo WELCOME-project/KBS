@@ -1,0 +1,996 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://localhost:8060/welcome/integration/coordination/ajan/agents/welcome/services/CreateCV.owl"
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:welcome="https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#"
+	xmlns:service="http://www.daml.org/services/owl-s/1.1/Service.owl#"
+	xmlns:process="http://www.daml.org/services/owl-s/1.1/Process.owl#" 
+	xmlns:profile="http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+	xmlns:expr="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#" 
+	xmlns:pddlexpr="http://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xml:base="http://localhost:8060/welcome/integration/coordination/ajan/agents/welcome/services/CreateCV.owl">
+	<owl:Ontology rdf:about="">
+		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Service.owl"/>
+		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl"/>
+		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Profile.owl"/>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employment Create a CV</rdfs:comment>
+	</owl:Ontology>
+  
+  	<!-- ******************************************* -->
+	<!-- 			Version: 21 June 2022 			 -->
+	<!-- ******************************************* -->
+  
+	<service:Service rdf:ID="createCV">
+        <service:describedBy rdf:resource="#employmentProcess"/>
+        <service:presents rdf:resource="#employmentProfile"/>
+	</service:Service>
+  
+	<process:AtomicProcess rdf:ID="employmentProcess">
+		<service:describes rdf:resource="#createCV"/>
+		<!-- Precondition -->
+		<process:hasPrecondition>
+			<pddlexpr:PDDL-Expression rdf:ID="employmentCondition">
+				<expr:expressionBody rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> (https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DialogueUser ?http://localhost:8060/welcome/integration/coordination/ajan/agents/welcome/services/CreateCV.owl#TCNDialogueUser) </expr:expressionBody>
+			</pddlexpr:PDDL-Expression>
+		</process:hasPrecondition>
+		<!-- List of Local -->
+		<process:hasLocal>
+			<process:Local rdf:ID="TCNDialogueUser">
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DialogueUser</process:parameterType>
+			</process:Local>
+		</process:hasLocal>
+		<process:hasInput>
+			<process:Input rdf:ID="informServicePurpose">
+				<welcome:hasDIP rdf:resource="#CVPurpose"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformServicePurpose_noCV</welcome:hasTemplateId>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformServicePurpose_CV</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informDisclaimerCVModification">
+				<welcome:hasDIP rdf:resource="#CVPurpose"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformDisclaimerCVModification_noCV</welcome:hasTemplateId>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformDisclaimerCVModification_CV</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainCVCreationInterest">
+				<welcome:hasDIP rdf:resource="#CVPurpose"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CVCreationInterest</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVCreationInterest</welcome:hasTemplateId>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVContinueInterest</welcome:hasTemplateId>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVReviewInterest</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informIntroductionSection">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformIntroductionSection</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainName">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Name</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainNameCanned</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainFirstSurname">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#FirstSurname</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainSurnameCanned</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainName"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainSecondSurname">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SecondSurname</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainSecondSurname</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainName"/>
+			    <welcome:dependsOn rdf:resource="#obtainFirstSurname"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainBirthDay">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Birthday</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainBirthDayCanned</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainMotherTongue">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#NativeLanguageName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMotherTongue</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainMobilePhone">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#MobilePhone</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMobilePhone</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainLandline">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Landline</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainLandline</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainMobilePhone"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainEmail">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Email</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainEmail</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainCity">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#City</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCity</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainStreetName">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainStreetName</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<!--<process:hasInput>
+		    <process:Input rdf:ID="obtainStreetType">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetType</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainStreetTypeCanned</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainStreetName"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>-->
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPostCode">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PostCode</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPostCode</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainIncludeFullAddress">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainIncludeFullAddress</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainStreetNumber">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetNumber</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainStreetNumber</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainIncludeFullAddress"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainFloorNumber">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#FloorNumber</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainFloorNumber</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainIncludeFullAddress"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainApartmentNumber">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ApartmentNumber</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainApartmentNumber</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainIncludeFullAddress"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>		
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPersonalInfoConfirmation">
+				<welcome:hasDIP rdf:resource="#PersonalInfo"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVSectionConfirmation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainIntroductionEducation">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IntroductionEducation</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainIntroductionEducation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreDegreeTitle">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DegreeTitle</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreDegreeTitle</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreDegreeCertificate">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DegreeCertificate</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreDegreeCertificate</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreSchool">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#InstitutionName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreSchool</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreYear">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#GraduationYear</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreYear</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreSchoolCompleted">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#GraduationStatus</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreSchoolCompleted</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreGrade">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DegreeGrade</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreGrade</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainMoreDegreeCertificate"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalEducation">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalEducation</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalEducation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainEducationalInformationConfirmation">
+				<welcome:hasDIP rdf:resource="#EducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#EducationReview</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVSectionConfirmation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainSuggestOtherEducation">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IntroductionOtherEducation</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainSuggestOtherEducation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseName">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseName</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseCertificate">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseCertificate</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseCertificate</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseStatus">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseStatus</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseStatus</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseSchool">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseSchool</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseSchoolName</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseSchoolType">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseSchoolType</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseSchoolType</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseYear">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseYear</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseYear</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseDuration">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseDuration</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseDuration</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalCourseGrade">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseGrade</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseGrade</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalMoreEducation">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalCourse</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalMoreEducation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMoreEducationalInformationConfirmation">
+				<welcome:hasDIP rdf:resource="#OtherEducationInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseReview</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVSectionConfirmation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="informLanguagesSection">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IntroductionLanguage</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformLanguagesSection</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageConfirmation">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IncludeAdditionalLanguage</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguage</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="informCycleProcedure">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageProcedure</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformCycleProcedure</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageName">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageName</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageConfirmation"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageLevel">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageLevel</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageLevel</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageName"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCertificate">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCertificate</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCertificate</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageName"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageOther">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageOther</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageOther</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageName"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourse">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourse</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCourse</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageOther"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseCertificate">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseCertificate</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCourseCertificate</welcome:hasTemplateId>
+			     <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseStatus">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseStatus</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseStatus</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+				<welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourseCertificate"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseSchool">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseSchool</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseSchoolName</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseSchoolType">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseSchoolType</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseSchoolType</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseYear">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseYear</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseYear</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseName">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCourseName</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseDuration">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseDuration</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseDuration</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCourseGrade">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCourseGrade</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMoreEducationalCourseGrade</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCourse"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCountry">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCountry</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCountry</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageOther"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCountryInclude">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCountryInclude</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCountryInclude</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCountry"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCountryName">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCountryName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCountryName</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCountry"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguageCountryDuration">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguageCountryDuration</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguageCountryDuration</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageCountry"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalLanguage">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalLanguage</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalLanguage</welcome:hasTemplateId>
+			     <welcome:dependsOn rdf:resource="#obtainAdditionalLanguageName"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainLanguageInformationConfirmation">
+				<welcome:hasDIP rdf:resource="#LanguageInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#LanguageReview</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVSectionConfirmation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="informIntroductionEmployment">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IntroductionEmployment</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformIntroductionEmployment</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainEmploymentStatus">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#EmploymentStatus</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainEmploymentStatus</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainCurrentOccupation">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Occupation</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCurrentOccupation</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainEmployerName">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#EmployerName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainEmployerName</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainEmployerAddress">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#EmployerAddress</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainEmployerAddress</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainStartingDate">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StartingDate</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainStartingDate</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainMainActivities">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#MainActivities</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainMainActivities</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPreviousEmploymentStatus">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousEmploymentStatus</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPreviousEmploymentStatus</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPreviousOccupation">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousOccupation</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPreviousOccupation</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainPreviousEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPreviousEmployerName">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousEmployerName</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPreviousEmployerName</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainPreviousEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPreviousEmployerAddress">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousEmployerAddress</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPreviousEmployerAddress</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainPreviousEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPreviousStartingDate">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousStartingDate</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainStartingDate</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainPreviousEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPreviousEndDate">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousEndDate</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPreviousEndDate</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainPreviousEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainPreviousMainActivities">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousMainActivities</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPreviousMainActivities</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainPreviousEmploymentStatus"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainAdditionalEmployment">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AdditionalEmployment</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAdditionalEmployment</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainPreviousEmploymentStatus"/>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainEmploymentInformationConfirmation">
+				<welcome:hasDIP rdf:resource="#EmploymentInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#EmploymentReview</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVSectionConfirmation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="informSkillsSectionIntro">
+				<welcome:hasDIP rdf:resource="#SkillInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformSkillsSectionIntro</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>		
+		<process:hasInput>
+		    <process:Input rdf:ID="informOtherSectionIntro">
+				<welcome:hasDIP rdf:resource="#OtherInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformOtherSectionIntro</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainIncludeCarInfo">
+				<welcome:hasDIP rdf:resource="#OtherInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IncludeCarInfo</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainIncludeCarInfo</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainDrivingLicense">
+				<welcome:hasDIP rdf:resource="#OtherInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DrivingLicense</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainDrivingLicense</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainIncludeCarInfo"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainCar">
+				<welcome:hasDIP rdf:resource="#OtherInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CarPossession</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCar</welcome:hasTemplateId>
+			    <welcome:dependsOn rdf:resource="#obtainIncludeCarInfo"/>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainOtherInformationConfirmation">
+				<welcome:hasDIP rdf:resource="#OtherInformation"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OtherReview</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainCVSectionConfirmation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="informDocumentCreation">
+				<welcome:hasDIP rdf:resource="#CreateCVDocument"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformDocumentCreation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+		    <process:Input rdf:ID="obtainCVCompletionConfirmation">
+				<welcome:hasDIP rdf:resource="#CreateCVDocument"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasResult>
+			<process:Result rdf:ID="employmentResult">
+				<process:hasEffect>
+					<pddlexpr:PDDL-Expression>
+						<expr:expressionBody rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Trained ?http://localhost:8060/welcome/integration/coordination/ajan/agents/welcome/services/CreateCV.owl#TCNDialogueUser)</expr:expressionBody>
+					</pddlexpr:PDDL-Expression>
+				</process:hasEffect>
+			</process:Result>
+		</process:hasResult>
+	</process:AtomicProcess>
+	
+	
+	<profile:Profile rdf:ID="employmentProfile">
+		<!--  #########	 Non-Functional Description ######################## --> 
+		<profile:serviceName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Create a CV</profile:serviceName>        
+		<profile:textDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Employment Job Interview CV write labour market coaching CV creation create FAQs CV employers.</profile:textDescription>
+		<!-- <profile:contactInformation rdf:resource="https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#praksisAthens"/> --> 
+        <!-- <profile:contactInformation rdf:resource="https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#praksisThessaloniki"/> --> 
+		<!--  #########	 Functional Description ######################## --> 
+		<profile:hasPrecondition rdf:resource="#employmentCondition"/>
+		<service:presentedBy rdf:resource="#createCV"/>
+		<profile:hasInput rdf:resource="#informServicePurpose"/>
+		<profile:hasInput rdf:resource="#informDisclaimerCVModification"/>
+		<profile:hasInput rdf:resource="#obtainCVCreationInterest"/>
+		<profile:hasInput rdf:resource="#informIntroductionSection"/>
+		<profile:hasInput rdf:resource="#obtainName"/>
+		<profile:hasInput rdf:resource="#obtainFirstSurname"/>
+		<profile:hasInput rdf:resource="#obtainSecondSurname"/>
+		<profile:hasInput rdf:resource="#obtainBirthDay"/>
+		<profile:hasInput rdf:resource="#obtainMotherTongue"/>
+		<profile:hasInput rdf:resource="#obtainMobilePhone"/>
+		<profile:hasInput rdf:resource="#obtainLandline"/>
+		<profile:hasInput rdf:resource="#obtainEmail"/>
+		<profile:hasInput rdf:resource="#obtainCity"/>
+		<profile:hasInput rdf:resource="#obtainStreetName"/>
+		<!--<profile:hasInput rdf:resource="#obtainStreetType"/>-->
+		<profile:hasInput rdf:resource="#obtainPostCode"/>
+		<profile:hasInput rdf:resource="#obtainIncludeFullAddress"/>
+		<profile:hasInput rdf:resource="#obtainStreetNumber"/>
+		<profile:hasInput rdf:resource="#obtainFloorNumber"/>
+		<profile:hasInput rdf:resource="#obtainApartmentNumber"/>
+		<profile:hasInput rdf:resource="#obtainPersonalInfoConfirmation"/>
+		<profile:hasInput rdf:resource="#obtainIntroductionEducation"/>
+		<profile:hasInput rdf:resource="#obtainMoreDegreeTitle"/>
+		<profile:hasInput rdf:resource="#obtainMoreDegreeCertificate"/>
+		<profile:hasInput rdf:resource="#obtainMoreSchool"/>
+		<profile:hasInput rdf:resource="#obtainMoreYear"/>
+		<profile:hasInput rdf:resource="#obtainMoreSchoolCompleted"/>
+		<profile:hasInput rdf:resource="#obtainMoreGrade"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalEducation"/>
+		<profile:hasInput rdf:resource="#obtainEducationalInformationConfirmation"/>
+		<profile:hasInput rdf:resource="#obtainSuggestOtherEducation"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseName"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseCertificate"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseStatus"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseSchool"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseSchoolType"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseYear"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseDuration"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalCourseGrade"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalMoreEducation"/>
+		<profile:hasInput rdf:resource="#obtainMoreEducationalInformationConfirmation"/>
+		<profile:hasInput rdf:resource="#informLanguagesSection"/>		
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageConfirmation"/>
+		<profile:hasInput rdf:resource="#informCycleProcedure"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageName"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageLevel"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCertificate"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageOther"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourse"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseCertificate"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseStatus"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseSchool"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseSchoolType"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseYear"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseName"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseDuration"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCourseGrade"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCountry"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCountryInclude"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCountryName"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguageCountryDuration"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalLanguage"/>
+		<profile:hasInput rdf:resource="#obtainLanguageInformationConfirmation"/>
+		<profile:hasInput rdf:resource="#informIntroductionEmployment"/>
+		<profile:hasInput rdf:resource="#obtainEmploymentStatus"/>
+		<profile:hasInput rdf:resource="#obtainCurrentOccupation"/>
+		<profile:hasInput rdf:resource="#obtainEmployerName"/>
+		<profile:hasInput rdf:resource="#obtainEmployerAddress"/>
+		<profile:hasInput rdf:resource="#obtainStartingDate"/>
+		<profile:hasInput rdf:resource="#obtainMainActivities"/>
+		<profile:hasInput rdf:resource="#obtainPreviousEmploymentStatus"/>
+		<profile:hasInput rdf:resource="#obtainPreviousOccupation"/>
+		<profile:hasInput rdf:resource="#obtainPreviousEmployerName"/>
+		<profile:hasInput rdf:resource="#obtainPreviousEmployerAddress"/>
+		<profile:hasInput rdf:resource="#obtainPreviousStartingDate"/>
+		<profile:hasInput rdf:resource="#obtainPreviousEndDate"/>
+		<profile:hasInput rdf:resource="#obtainPreviousMainActivities"/>
+		<profile:hasInput rdf:resource="#obtainAdditionalEmployment"/>
+		<profile:hasInput rdf:resource="#obtainEmploymentInformationConfirmation"/>
+		<profile:hasInput rdf:resource="#informSkillsSectionIntro"/>
+		<profile:hasInput rdf:resource="#informOtherSectionIntro"/>
+		<profile:hasInput rdf:resource="#obtainIncludeCarInfo"/>
+		<profile:hasInput rdf:resource="#obtainDrivingLicense"/>
+		<profile:hasInput rdf:resource="#obtainCar"/>
+		<profile:hasInput rdf:resource="#obtainOtherInformationConfirmation"/>
+		<profile:hasInput rdf:resource="#informDocumentCreation"/>
+		<profile:hasInput rdf:resource="#obtainCVCompletionConfirmation"/>
+		<profile:hasResult rdf:resource="#employmentResult"/>
+	</profile:Profile>   
+
+	<owl:Class rdf:ID="CVPurpose"/> 
+	<owl:Class rdf:ID="PersonalInfo"/> 
+	<owl:Class rdf:ID="EducationInformation"/> 
+	<owl:Class rdf:ID="OtherEducationInformation"/>
+	<owl:Class rdf:ID="LanguageInformation"/> 
+	<owl:Class rdf:ID="EmploymentInformation"/> 
+	<owl:Class rdf:ID="SkillInformation"/>
+	<owl:Class rdf:ID="OtherInformation"/>
+	<owl:Class rdf:ID="CreateCVDocument"/> 
+	
+</rdf:RDF>

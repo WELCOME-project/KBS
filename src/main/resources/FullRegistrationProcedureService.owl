@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://localhost:8080/services/FullRegistrationProcedureService.owl"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"    
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+	xmlns:welcome="https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#"
+    xmlns:service="http://www.daml.org/services/owl-s/1.1/Service.owl#"
+	xmlns:process="http://www.daml.org/services/owl-s/1.1/Process.owl#" 
+	xmlns:profile="http://www.daml.org/services/owl-s/1.1/Profile.owl#"
+   	xmlns:expr="http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#"  
+	xmlns:pddlexpr="http://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl#"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+	xmlns:xml="http://www.w3.org/XML/1998/namespace"
+	xml:base="http://localhost:8080/services/FullRegistrationProcedureService.owl">
+	<owl:Ontology rdf:about="http://localhost:8080/services/FullRegistrationProcedureService.owl">
+		<owl:imports rdf:resource="https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl"/>
+		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Service.owl"/>
+		<owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Process.owl"/>
+        <owl:imports rdf:resource="http://www.daml.org/services/owl-s/1.1/Profile.owl"/> 
+        <owl:imports rdf:resource="http://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl"/>
+		<rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Information on the PRAKSIS full-registration procedure </rdfs:comment>
+	</owl:Ontology>
+  
+  	<!-- ******************************************* -->
+	<!-- 			Version: 23 Feb 2022 			 -->
+	<!-- ******************************************* -->
+  
+	<service:Service rdf:ID="FullRegistrationProcedureService">
+        <service:describedBy rdf:resource="#fullpreregistration"/>
+        <service:presents rdf:resource="#fullRegistrationProfile"/>
+	</service:Service>
+  
+	<process:AtomicProcess rdf:ID="fullpreregistration">
+		<service:describes rdf:resource="#FullRegistrationProcedureService"/>
+		<!-- Precondition -->
+		<process:hasPrecondition>
+			<pddlexpr:PDDL-Expression rdf:ID="fullpreregistrationCondition">
+				<expr:expressionBody rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> (https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DialogueUser ?http://localhost:8080/services/FullRegistrationProcedureService.owl#TCNDialogueUser) </expr:expressionBody>
+			</pddlexpr:PDDL-Expression>
+		</process:hasPrecondition>
+		<!-- List of Local -->
+		<process:hasLocal>
+			<process:Local rdf:ID="TCNDialogueUser">
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#string">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DialogueUser</process:parameterType>
+			</process:Local>
+		</process:hasLocal>
+		<process:hasInput>
+			<process:Input rdf:ID="informGreeting">
+				<welcome:hasDIP rdf:resource="#ScenarioIntroduction"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformGreeting</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informScenarioIntroduction">				
+				<welcome:hasDIP rdf:resource="#ScenarioIntroduction"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+				<welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformScenarioIntroduction</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			    <welcome:dependsOn rdf:resource="#InformSimulation"/>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainInterest">
+				<welcome:hasDIP rdf:resource="#ScenarioIntroduction"/>			
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainInterest</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			    <welcome:dependsOn rdf:resource="#informContactPerson"/>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainRegistration">
+				<welcome:hasDIP rdf:resource="#AsylumPreRegistration"/>			
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AsylumPreregistration</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainRegistration</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informAsylumClaimRequired">
+				<welcome:hasDIP rdf:resource="#AsylumClaimRegistration"/>			
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformAsylumClaimRequired</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainAsylumClaimRegistration">
+				<welcome:hasDIP rdf:resource="#AsylumClaimRegistration"/>			
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Template</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainApplicationKnowledge">
+				<welcome:hasDIP rdf:resource="#AsylumApplicationKnowledge"/>				
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AsylumApplicationKnowledge</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+				<welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainApplicationKnowledge</welcome:hasTemplateId>
+				<welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainRegistrationInterest">
+				<welcome:hasDIP rdf:resource="#RegistrationProcessDetails"/>			
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainRegistrationInterest</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informRegistrationApp">
+				<welcome:hasDIP rdf:resource="#AsylumServiceApp"/>		
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformRegistrationApp</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainOverviewInterest">
+				<welcome:hasDIP rdf:resource="#AsylumServiceApp"/>				
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainOverviewInterest</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informRequiredInformation">
+				<welcome:hasDIP rdf:resource="#WebsiteProcedure"/>			
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformRequiredInformation</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationRequiredInfo">
+				<welcome:hasDIP rdf:resource="#WebsiteProcedure"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmationRequiredInfo</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainAsylumPreRegistrationNumber">
+				<welcome:hasDIP rdf:resource="#BeginFillingOnlineForm"/>	
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AsylumPreRegistrationNumber</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainAsylumPreRegistrationNumber</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informSurnameFormat">
+				<welcome:hasDIP rdf:resource="#IdentificationStepSurname"/>		
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformNameFormat</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationSurnameStep">
+				<welcome:hasDIP rdf:resource="#IdentificationStepSurname"/>				
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_Understand</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informNameFormat">
+				<welcome:hasDIP rdf:resource="#IdentificationStepName"/>				
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformNameFormat</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>		
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationNameStep">
+				<welcome:hasDIP rdf:resource="#IdentificationStepName"/>	
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_Clear</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informBirthdateFormat">
+				<welcome:hasDIP rdf:resource="#IdentificationStepBirthdate"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformBirthdateFormat</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationBirthdateStep">
+				<welcome:hasDIP rdf:resource="#IdentificationStepBirthdate"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_Clear</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informTelephoneFormat">
+				<welcome:hasDIP rdf:resource="#IdentificationStepTelephone"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformTelephoneFormat</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			    <welcome:dependsOn rdf:resource="#informProposeTimeSlot"/>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationTelephoneStep">
+				<welcome:hasDIP rdf:resource="#IdentificationStepTelephone"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_OK</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informCaptcha">
+				<welcome:hasDIP rdf:resource="#IdentificationStepCaptcha"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformCaptcha</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationCaptchaStep">
+				<welcome:hasDIP rdf:resource="#IdentificationStepCaptcha"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_Understand</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainVisualizationInterest">
+				<welcome:hasDIP rdf:resource="#PrefilledFormVisualization"/>			
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainVisualizationInterest</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informFormDisclaimer">
+				<welcome:hasDIP rdf:resource="#PrefilledFormDisclaimer"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformFormDisclaimer</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informPrefilledFormUse">
+				<welcome:hasDIP rdf:resource="#PrefilledFormUsage"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformPrefilledFormUse</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationUsage">
+				<welcome:hasDIP rdf:resource="#PrefilledFormUsage"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+				<welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_Understand</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainPrintedInterest">
+				<welcome:hasDIP rdf:resource="#PrefilledFormPrinted"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemDemand</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainPrintedInterest</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informLoginMechanism">
+				<welcome:hasDIP rdf:resource="#LoginStep"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformLoginMechanism</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationLogin">
+				<welcome:hasDIP rdf:resource="#LoginStep"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_Clear</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informLanguageSelection">
+				<welcome:hasDIP rdf:resource="#LanguageStep"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformLanguageSelection</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="obtainConfirmationLanguage">
+				<welcome:hasDIP rdf:resource="#LanguageStep"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Boolean</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#ConfirmationRequest</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TObtainConfirmation_Understand</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informOtherQuestion">
+				<welcome:hasDIP rdf:resource="#AdditionalQuestions"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformOtherQuestion</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informFarewell">
+				<welcome:hasDIP rdf:resource="#AdditionalQuestions"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformNormalClosingFarewell</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasInput>
+			<process:Input rdf:ID="informEnd">
+				<welcome:hasDIP rdf:resource="#AdditionalQuestions"/>
+				<process:parameterType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template</process:parameterType>
+			    <welcome:hasSlotType rdf:datatype="http://www.w3.org/2001/XMLSchema#anyURI">https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SystemInfo</welcome:hasSlotType>
+			    <welcome:hasTemplateId rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TInformEnd</welcome:hasTemplateId>
+			    <welcome:isOptional rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</welcome:isOptional>
+			</process:Input>
+		</process:hasInput>
+		<process:hasResult>
+			<process:Result rdf:ID="simulateAppointmentResult">
+				<process:hasEffect>
+					<pddlexpr:PDDL-Expression>
+						<!-- Propose a new trival effect: DialogueUser is trained --> 
+						<expr:expressionBody rdf:datatype="http://www.w3.org/2001/XMLSchema#string">(https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Trained ?http://localhost:8080/services/FullRegistrationService.owl#DialogueUser) </expr:expressionBody>
+					</pddlexpr:PDDL-Expression>
+				</process:hasEffect>
+			</process:Result>
+		</process:hasResult>
+	</process:AtomicProcess>
+	
+	
+	<profile:Profile rdf:ID="fullRegistrationProfile">
+		<!--  #########	 Non-Functional Description ######################## --> 
+		<profile:serviceName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Information on the PRAKSIS full-registration procedure </profile:serviceName>        
+		<profile:textDescription rdf:datatype="http://www.w3.org/2001/XMLSchema#string"> Information on the PRAKSIS full-registration procedure </profile:textDescription>
+		<profile:contactInformation rdf:resource="https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CommunityCenterAthens"/>
+        <profile:contactInformation rdf:resource="https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PolyclinicThessaloniki"/>
+		<!--  #########	 Functional Description ######################## --> 
+		<profile:hasPrecondition rdf:resource="#fullpreregistrationCondition"/>
+		<service:presentedBy rdf:resource="#FullRegistrationProcedureService"/>
+		<profile:hasInput rdf:resource="#informGreeting"/>
+		<profile:hasInput rdf:resource="#informScenarioIntroduction"/>
+		<profile:hasInput rdf:resource="#obtainInterest"/>
+		<profile:hasInput rdf:resource="#obtainRegistration"/>
+		<profile:hasInput rdf:resource="informAsylumClaimRequired"/>
+		<profile:hasInput rdf:resource="#obtainAsylumClaimRegistration"/>
+		<profile:hasInput rdf:resource="#obtainApplicationKnowledge"/>
+		<profile:hasInput rdf:resource="#obtainRegistrationInterest"/>
+		<profile:hasInput rdf:resource="#informRegistrationApp"/>
+		<profile:hasInput rdf:resource="#obtainOverviewInterest"/>
+		<profile:hasInput rdf:resource="#informRequiredInformation"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationRequiredInfo"/>
+		<profile:hasInput rdf:resource="#obtainAsylumPreRegistrationNumber"/>
+		<profile:hasInput rdf:resource="#informSurnameFormat"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationSurnameStep"/>
+		<profile:hasInput rdf:resource="#informNameFormat"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationNameStep"/>
+		<profile:hasInput rdf:resource="#informBirthdateFormat"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationBirthdateStep"/>
+		<profile:hasInput rdf:resource="#informTelephoneFormat"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationTelephoneStep"/>
+		<profile:hasInput rdf:resource="#informCaptcha"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationCaptchaStep"/>
+		<profile:hasInput rdf:resource="#obtainVisualizationInterest"/>
+		<profile:hasInput rdf:resource="#informFormDisclaimer"/>
+		<profile:hasInput rdf:resource="#informPrefilledFormUse"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationUsage"/>
+		<profile:hasInput rdf:resource="#obtainPrintedInterest"/>
+		<profile:hasInput rdf:resource="#informLoginMechanism"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationLogin"/>
+		<profile:hasInput rdf:resource="#informLanguageSelection"/>
+		<profile:hasInput rdf:resource="#obtainConfirmationLanguage"/>
+		<profile:hasInput rdf:resource="#informOtherQuestion"/>
+		<profile:hasInput rdf:resource="#informFarewell"/>
+		<profile:hasInput rdf:resource="#informEnd"/>
+		<profile:hasResult rdf:resource="#simulateAppointmentResult"/>
+	</profile:Profile>   
+	
+	<welcome:DIP rdf:ID="ScenarioIntroduction"/> 
+	<welcome:DIP rdf:ID="AsylumPreRegistration"/> 
+	<welcome:DIP rdf:ID="AsylumClaimRegistration"/> 
+	<welcome:DIP rdf:ID="AsylumApplicationKnowledge"/> 
+	<welcome:DIP rdf:ID="RegistrationProcessDetails"/> 
+	<welcome:DIP rdf:ID="AsylumServiceApp"/> 
+	<welcome:DIP rdf:ID="WebsiteProcedure"/> 
+	<welcome:DIP rdf:ID="BeginFillingOnlineForm"/> 
+	<welcome:DIP rdf:ID="IdentificationStepSurname"/> 
+	<welcome:DIP rdf:ID="IdentificationStepName"/> 
+	<welcome:DIP rdf:ID="IdentificationStepBirthdate"/> 
+	<welcome:DIP rdf:ID="IdentificationStepTelephone"/> 
+	<welcome:DIP rdf:ID="IdentificationStepCaptcha"/> 
+	<welcome:DIP rdf:ID="PrefilledFormVisualization"/> 
+	<welcome:DIP rdf:ID="PrefilledFormDisclaimer"/> 
+	<welcome:DIP rdf:ID="PrefilledFormUsage"/> 
+	<welcome:DIP rdf:ID="PrefilledFormPrinted"/> 
+	<welcome:DIP rdf:ID="LoginStep"/> 
+	<welcome:DIP rdf:ID="LanguageStep"/> 
+	<welcome:DIP rdf:ID="AdditionalQuestions"/> 
+	
+</rdf:RDF>

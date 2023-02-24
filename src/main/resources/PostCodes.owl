@@ -1,0 +1,661 @@
+@prefix : <http://www.semanticweb.org/gtzionis_local/ontologies/2022/10/untitled-ontology-40#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#> .
+
+<https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#hasSmallerRegion
+:hasSmallerRegion rdf:type owl:ObjectProperty ;
+                  rdfs:domain :PostCodeGreece ;
+                  rdfs:range :SmallerRegion .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#hasPostCode
+:hasPostCode rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#PostCodeGreece
+:PostCodeGreece rdf:type owl:Class .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#SmallerRegion
+:SmallerRegion rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Achaea
+:Achaea rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "25xxx"^^xsd:string ,
+                     "26xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Aetolia-Acarnania
+:Aetolia-Acarnania rdf:type owl:NamedIndividual ,
+                            :PostCodeGreece ;
+                   :hasPostCode "30xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Agia_Paraskevi
+:Agia_Paraskevi rdf:type owl:NamedIndividual ,
+                         :SmallerRegion .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Alonnisos
+:Alonnisos rdf:type owl:NamedIndividual ,
+                    :PostCodeGreece ;
+           :hasPostCode "37005"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Andros
+:Andros rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "845xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Antiparos
+:Antiparos rdf:type owl:NamedIndividual ,
+                    :PostCodeGreece ;
+           :hasPostCode "84007"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Arcadia
+:Arcadia rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "22xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Argolis
+:Argolis rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "21xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Arta
+:Arta rdf:type owl:NamedIndividual ,
+               :PostCodeGreece ;
+      :hasPostCode "47xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Astypalaia
+:Astypalaia rdf:type owl:NamedIndividual ,
+                     :PostCodeGreece ;
+            :hasPostCode "85900"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Boeotia
+:Boeotia rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "19012"^^xsd:string ,
+                      "32xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Central_Athens
+:Central_Athens rdf:type owl:NamedIndividual ,
+                         :PostCodeGreece ;
+                :hasPostCode "111xx"^^xsd:string ,
+                             "143xx"^^xsd:string ,
+                             "157xx"^^xsd:string ,
+                             "16121"^^xsd:string ,
+                             "162xx"^^xsd:string ,
+                             "163xx"^^xsd:string ,
+                             "172xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Cephalonia
+:Cephalonia rdf:type owl:NamedIndividual ,
+                     :PostCodeGreece ;
+            :hasPostCode "280xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Chalkidiki
+:Chalkidiki rdf:type owl:NamedIndividual ,
+                     :PostCodeGreece ;
+            :hasPostCode "63xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Chania
+:Chania rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "73xxx"^^xsd:string ,
+                     "74055"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Chios
+:Chios rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "82xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Corfu
+:Corfu rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "49xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Corinthia
+:Corinthia rdf:type owl:NamedIndividual ,
+                    :PostCodeGreece ;
+           :hasPostCode "20xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Drama
+:Drama rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "66xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#East_Attica
+:East_Attica rdf:type owl:NamedIndividual ,
+                      :PostCodeGreece ;
+             :hasPostCode "136xx"^^xsd:string ,
+                          "14576"^^xsd:string ,
+                          "15349"^^xsd:string ,
+                          "15351"^^xsd:string ,
+                          "166xx"^^xsd:string ,
+                          "19015"^^xsd:string ,
+                          "190xx"^^xsd:string ,
+                          "19400"^^xsd:string ,
+                          "195xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Elis
+:Elis rdf:type owl:NamedIndividual ,
+               :PostCodeGreece ;
+      :hasPostCode "27xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Euboea
+:Euboea rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "34001"^^xsd:string ,
+                     "34007"^^xsd:string ,
+                     "34008"^^xsd:string ,
+                     "34017"^^xsd:string ,
+                     "34100"^^xsd:string ,
+                     "34300"^^xsd:string ,
+                     "34500"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Evros
+:Evros rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "68xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Evrytania
+:Evrytania rdf:type owl:NamedIndividual ,
+                    :PostCodeGreece ;
+           :hasPostCode "36xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Florina
+:Florina rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "53xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Grevena
+:Grevena rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "51xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Halki
+:Halki rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "85110"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Heraklion
+:Heraklion rdf:type owl:NamedIndividual ,
+                    :PostCodeGreece ;
+           :hasPostCode "70xxx"^^xsd:string ,
+                        "71xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Ikaria
+:Ikaria rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "833xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Imathia
+:Imathia rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "59xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Ioannina
+:Ioannina rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "44xxx"^^xsd:string ,
+                       "45xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Islands
+:Islands rdf:type owl:NamedIndividual ;
+         :hasPostCode "18010"^^xsd:string ,
+                      "18011"^^xsd:string ,
+                      "18020"^^xsd:string ,
+                      "18040"^^xsd:string ,
+                      "18050"^^xsd:string ,
+                      "189xx"^^xsd:string ,
+                      "80100"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Ithaca
+:Ithaca rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "2830x"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kalymnos
+:Kalymnos rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "85200"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Karditsa
+:Karditsa rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "43xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Karpathos
+:Karpathos rdf:type owl:NamedIndividual ,
+                    :PostCodeGreece ;
+           :hasPostCode "85700"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kasos
+:Kasos rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "85800"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kastellorizo
+:Kastellorizo rdf:type owl:NamedIndividual ,
+                       :PostCodeGreece ;
+              :hasPostCode "85111"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kastoria
+:Kastoria rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "52xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kavala
+:Kavala rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "64xxx"^^xsd:string ,
+                     "65xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kea
+:Kea rdf:type owl:NamedIndividual ,
+              :PostCodeGreece ;
+     :hasPostCode "84002"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kimolos
+:Kimolos rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "84004"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kos
+:Kos rdf:type owl:NamedIndividual ,
+              :PostCodeGreece ;
+     :hasPostCode "853xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kozani
+:Kozani rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "50xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Kythnos
+:Kythnos rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "84006"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Laconia
+:Laconia rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "23xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Larissa
+:Larissa rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "40xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Lasithi
+:Lasithi rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "72xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Leipsoi
+:Leipsoi rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "85001"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Lemnos
+:Lemnos rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "81400"^^xsd:string ,
+                     "81500"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Leros
+:Leros rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "85400"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Lesbos
+:Lesbos rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "81xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Magnesia
+:Magnesia rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "37xxx"^^xsd:string ,
+                       "38xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Messenia
+:Messenia rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "24xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Milos
+:Milos rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "84800"^^xsd:string ,
+                    "84801"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Mykonos
+:Mykonos rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "84600"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Naxos
+:Naxos rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "843xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Nisyros
+:Nisyros rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "85303"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#North_Athens
+:North_Athens rdf:type owl:NamedIndividual ,
+                       :PostCodeGreece ;
+              :hasSmallerRegion :Agia_Paraskevi ;
+              :hasPostCode "141xx" ,
+                           "142xx" ,
+                           "1445x" ,
+                           "145xx" ,
+                           "151xx" ,
+                           "152xx" ,
+                           "153xx" ,
+                           "15452"^^xsd:string ,
+                           "154xx" ,
+                           "15561"^^xsd:string ,
+                           "15562"^^xsd:string ,
+                           "15669"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Paros
+:Paros rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "84400"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Patmos
+:Patmos rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "855xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Pella
+:Pella rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "61xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Phocis
+:Phocis rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "33xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Phtiotis
+:Phtiotis rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "35xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Pieria
+:Pieria rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "60xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Piraeus
+:Piraeus rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "181xx"^^xsd:string ,
+                      "182xx"^^xsd:string ,
+                      "184xx"^^xsd:string ,
+                      "185xx"^^xsd:string ,
+                      "18863"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Preveza
+:Preveza rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "48xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Rethymno
+:Rethymno rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "74xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Rhodes
+:Rhodes rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "85100"^^xsd:string ,
+                     "85131"^^xsd:string ,
+                     "85132"^^xsd:string ,
+                     "85133"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Rhodope
+:Rhodope rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "69xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Samos
+:Samos rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "831xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Serifos
+:Serifos rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "84005"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Serres
+:Serres rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "62xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Sifnos
+:Sifnos rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "84003"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Skiathos
+:Skiathos rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "37002"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Skopelos
+:Skopelos rdf:type owl:NamedIndividual ,
+                   :PostCodeGreece ;
+          :hasPostCode "37003"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Skyros
+:Skyros rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "34007"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#South_Athens
+:South_Athens rdf:type owl:NamedIndividual ,
+                       :PostCodeGreece ;
+              :hasPostCode "164xx"^^xsd:string ,
+                           "165xx"^^xsd:string ,
+                           "166xx"^^xsd:string ,
+                           "167xx"^^xsd:string ,
+                           "171xx"^^xsd:string ,
+                           "173xx"^^xsd:string ,
+                           "174xx"^^xsd:string ,
+                           "17561"^^xsd:string ,
+                           "17562"^^xsd:string ,
+                           "17563"^^xsd:string ,
+                           "17564"^^xsd:string ,
+                           "176xx"^^xsd:string ,
+                           "17778"^^xsd:string ,
+                           "183xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Symi
+:Symi rdf:type owl:NamedIndividual ,
+               :PostCodeGreece ;
+      :hasPostCode "85600"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Thasos
+:Thasos rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "64004"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Thesprotia
+:Thesprotia rdf:type owl:NamedIndividual ,
+                     :PostCodeGreece ;
+            :hasPostCode "46xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Thessaloniki
+:Thessaloniki rdf:type owl:NamedIndividual ,
+                       :PostCodeGreece ;
+              :hasPostCode "54xxx"^^xsd:string ,
+                           "55xxx"^^xsd:string ,
+                           "56xxx"^^xsd:string ,
+                           "57xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Tilos
+:Tilos rdf:type owl:NamedIndividual ,
+                :PostCodeGreece ;
+       :hasPostCode "85002"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Trikala
+:Trikala rdf:type owl:NamedIndividual ,
+                  :PostCodeGreece ;
+         :hasPostCode "42xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#West_Athens
+:West_Athens rdf:type owl:NamedIndividual ,
+                      :PostCodeGreece ;
+             :hasPostCode "121xx" ,
+                          "122xx" ,
+                          "12351"^^xsd:string ,
+                          "125xx" ,
+                          "126xx" ,
+                          "131xx" ,
+                          "13231"^^xsd:string ,
+                          "133xx" ,
+                          "13451"^^xsd:string ,
+                          "135xx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#West_Attics
+:West_Attics rdf:type owl:NamedIndividual ,
+                      :PostCodeGreece ;
+             :hasPostCode "133xx"^^xsd:string ,
+                          "19006"^^xsd:string ,
+                          "19008"^^xsd:string ,
+                          "19012"^^xsd:string ,
+                          "19100"^^xsd:string ,
+                          "19200"^^xsd:string ,
+                          "19300"^^xsd:string ,
+                          "19600"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Xanthi
+:Xanthi rdf:type owl:NamedIndividual ,
+                 :PostCodeGreece ;
+        :hasPostCode "67xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#Zakynthos
+:Zakynthos rdf:type owl:NamedIndividual ,
+                    :PostCodeGreece ;
+           :hasPostCode "29xxx"^^xsd:string .
+
+
+###  https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#31xxx
+<https://raw.githubusercontent.com/gtzionis/PostCodesOntology/main/welcome.ttl#31xxx> rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

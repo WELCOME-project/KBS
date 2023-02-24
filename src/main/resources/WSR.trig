@@ -1,0 +1,1270 @@
+@prefix : <http://localhost:8080/WelcomeServicesOffers/FirstReceptionService.owl#> .
+@prefix process: <http://www.daml.org/services/owl-s/1.1/Process.owl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix service: <http://www.daml.org/services/owl-s/1.1/Service.owl#> .
+@prefix profile: <http://www.daml.org/services/owl-s/1.1/Profile.owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix pddlexpr: <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix welcome: <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#> .
+
+<file://C:/fakepath/FirstReceptionServiceComposed.owl> {
+  <http://localhost:8080/WelcomeServicesOffers/FirstReceptionService.owl> a owl:Ontology;
+    owl:imports <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl>,
+      <http://www.daml.org/services/owl-s/1.1/Service.owl>, <http://www.daml.org/services/owl-s/1.1/Process.owl>,
+      <http://www.daml.org/services/owl-s/1.1/Profile.owl>, <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl>;
+    rdfs:comment "Semantic Service Description First Reception Service in Catalonia" .
+  
+  :FirstReceptionService a <http://www.daml.org/services/owl-s/1.1/Service.owl#Service>;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#describedBy> :FillFormComposite;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#presents> :FirstReceptionServiceProfile .
+  
+  :FillFormComposite a <http://www.daml.org/services/owl-s/1.1/Process.owl#CompositeProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#describes> :FirstReceptionService;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasPrecondition> :FirstReceptionCondition;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasOutput> :InformDetailsCompletionComposed,
+      :InformDetailsLanguageComposed, :InformDetailsTimeComposed, :InformDetailsValueComposed,
+      :InformLabourModuleComposed, :InformLabourModuleAddressComposed, :InformLabourModuleHoursComposed,
+      :InformLanguageModuleComposed, :InformLanguageModuleAddressComposed, :InformLanguageModuleHoursComposed,
+      :InformOverviewComposed, :InformSocietyModuleComposed, :InformSocietyModuleAddressComposed,
+      :InformSocietyModuleHoursComposed, :InformTrainingComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> :ObtainAsylumClaimComposed,
+      :ObtainBirthdayComposed, :ObtainBuildingNameComposed, :ObtainBuildingTypeComposed,
+      :ObtainCityOfBirthComposed, :ObtainCountryOfBirthComposed, :ObtainCourseInstitutionComposed,
+      :ObtainCourseNameComposed, :ObtainCoursesCatalanComposed, :ObtainCoursesLabourComposed,
+      :ObtainCoursesSocietyComposed, :ObtainCoursesSpanishComposed, :ObtainDoorNumberComposed,
+      :ObtainDurationComposed, :ObtainEMailNotificationsComposed, :ObtainEmailComposed,
+      :ObtainEntranceComposed, :ObtainFirstSurnameComposed, :ObtainFloorNumberComposed,
+      :ObtainGenderComposed, :ObtainIDCountryComposed, :ObtainIDNumberComposed, :ObtainIDTypeComposed,
+      :ObtainIlliteracyComposed, :ObtainInterestRegistrationComposed, :ObtainKnowledgeCatalanComposed,
+      :ObtainKnowledgeLabourComposed, :ObtainKnowledgeSocietyComposed, :ObtainKnowledgeSpanishComposed,
+      :ObtainLandlineComposed, :ObtainLearningHandicapComposed, :ObtainMaritalStatusComposed,
+      :ObtainMobilePhoneComposed, :ObtainMunicipalityComposed, :ObtainNameComposed, :ObtainNationalityComposed,
+      :ObtainNotificationPreferencesComposed, :ObtainPostCodeComposed, :ObtainPreviousResidenceCataloniaComposed,
+      :ObtainPreviousResidenceOtherComposed, :ObtainPreviousResidenceSpainComposed, :ObtainProvinceComposed,
+      :ObtainRegistrationYearComposed, :ObtainSMSNotificationsComposed, :ObtainSecondSurnameComposed,
+      :ObtainStreetNameComposed, :ObtainStreetNumberComposed, :ObtainStreetTypeComposed,
+      :ObtainYearArrivalComposed, :ObtainYearCompletionComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasResult> :FirstReceptionServiceResult;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#composedOf> _:node1etc12hq0x1 .
+  
+  :FirstReceptionServiceProfile a <http://www.daml.org/services/owl-s/1.1/Profile.owl#Profile>;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#serviceName> "First Reception Service in Catalonia";
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#textDescription> """The First Reception Service consists of a number of initial training and information activities especially designed for its users. It includes counselling, initial adult training, and certification of basic skills and competences to make living and working in Catalonia easier. There are three different modules: 
+- Module A. Languages, which consists of a 90 h Catalan and 90 h Spanish course
+- Module B. Labour market knowledge, which consists of a 15 h course on labour market and employment 
+- Module C. Catalan Society, which consists of a 15 h course specifically on your municipality and the services you can apply for. 
+You can take each module separately and you have 2 years to complete them all. A module is completed if you attend, at least 75% of the classes. In case you can speak and understand Catalan or Spanish or you have a certificate proving that you already completed a course, you won’t have to take that specific module. 
+If you apply, you will have access to a set of basic tools that will help you become part of the Catalan society. The certificate can also be useful for job search as an added value to your skills and experience 
+Furthermore, the Reception Certificate could be used in legal immigration requirements like social ties, modification and/or renewal of residence authorizations, among others.""";
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#contactInformation> <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Cambrils>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Servei_Primera_Acollida>;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasInput> :ObtainAsylumClaimComposed,
+      :ObtainBirthdayComposed, :ObtainBuildingNameComposed, :ObtainBuildingTypeComposed,
+      :ObtainCityOfBirthComposed, :ObtainCountryOfBirthComposed, :ObtainCourseInstitutionComposed,
+      :ObtainCourseNameComposed, :ObtainCoursesCatalanComposed, :ObtainCoursesLabourComposed,
+      :ObtainCoursesSocietyComposed, :ObtainCoursesSpanishComposed, :ObtainDoorNumberComposed,
+      :ObtainDurationComposed, :ObtainEMailNotificationsComposed, :ObtainEmailComposed,
+      :ObtainEntranceComposed, :ObtainFirstSurnameComposed, :ObtainFloorNumberComposed,
+      :ObtainGenderComposed, :ObtainIDCountryComposed, :ObtainIDNumberComposed, :ObtainIDTypeComposed,
+      :ObtainIlliteracyComposed, :ObtainInterestRegistrationComposed, :ObtainKnowledgeCatalanComposed,
+      :ObtainKnowledgeLabourComposed, :ObtainKnowledgeSocietyComposed, :ObtainKnowledgeSpanishComposed,
+      :ObtainLandlineComposed, :ObtainLearningHandicapComposed, :ObtainMaritalStatusComposed,
+      :ObtainMobilePhoneComposed, :ObtainMunicipalityComposed, :ObtainNameComposed, :ObtainNationalityComposed,
+      :ObtainNotificationPreferencesComposed, :ObtainPostCodeComposed, :ObtainPreviousResidenceCataloniaComposed,
+      :ObtainPreviousResidenceOtherComposed, :ObtainPreviousResidenceSpainComposed, :ObtainProvinceComposed,
+      :ObtainRegistrationYearComposed, :ObtainSMSNotificationsComposed, :ObtainSecondSurnameComposed,
+      :ObtainStreetNameComposed, :ObtainStreetNumberComposed, :ObtainStreetTypeComposed,
+      :ObtainYearArrivalComposed, :ObtainYearCompletionComposed;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasOutput> :InformDetailsCompletionComposed,
+      :InformDetailsLanguageComposed, :InformDetailsTimeComposed, :InformDetailsValueComposed,
+      :InformLabourModuleComposed, :InformLabourModuleAddressComposed, :InformLabourModuleHoursComposed,
+      :InformLanguageModuleComposed, :InformLanguageModuleAddressComposed, :InformLanguageModuleHoursComposed,
+      :InformOverviewComposed, :InformSocietyModuleComposed, :InformSocietyModuleAddressComposed,
+      :InformSocietyModuleHoursComposed, :InformTrainingComposed;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasPrecondition> :FirstReceptionCondition;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasResult> :FirstReceptionServiceResult;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#presentedBy> :FirstReceptionService;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#has_process> :FillFormComposite .
+  
+  :FirstReceptionCondition a <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl#PDDL-Expression>;
+    <http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#expressionBody> " (https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Registered ?http://localhost:8080/WelcomeServicesOffers/FirstReceptionService.owl#ObtainFirstSurnameComposed) " .
+  
+  :ObtainAsylumClaim a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AsylumClaim"^^xsd:anyURI .
+  
+  :ObtainBirthday a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Birthday"^^xsd:anyURI .
+  
+  :ObtainBuildingName a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#BuildingName"^^xsd:anyURI .
+  
+  :ObtainBuildingType a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#BuildingType"^^xsd:anyURI .
+  
+  :ObtainCityOfBirth a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#City"^^xsd:anyURI .
+  
+  :ObtainCountryOfBirth a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Country"^^xsd:anyURI .
+  
+  :ObtainCourseInstitution a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseInstitution"^^xsd:anyURI .
+  
+  :ObtainCourseName a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Course"^^xsd:anyURI .
+  
+  :ObtainCoursesCatalan a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CatalanCourse"^^xsd:anyURI .
+  
+  :ObtainCoursesLabour a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#LabourMarketCourses"^^xsd:anyURI .
+  
+  :ObtainCoursesSociety a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseSociety"^^xsd:anyURI .
+  
+  :ObtainCoursesSpanish a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SpanishCourse"^^xsd:anyURI .
+  
+  :ObtainDoorNumber a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DoorNumber"^^xsd:anyURI .
+  
+  :ObtainDuration a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Duration"^^xsd:anyURI .
+  
+  :ObtainEMailNotifications a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#E-mailNotification"^^xsd:anyURI .
+  
+  :ObtainEmail a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#E-mail"^^xsd:anyURI .
+  
+  :ObtainEntrance a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Entrance"^^xsd:anyURI .
+  
+  :ObtainFirstSurname a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#FirstSurname"^^xsd:anyURI .
+  
+  :ObtainFloorNumber a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#FloorNumber"^^xsd:anyURI .
+  
+  :ObtainGender a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Gender"^^xsd:anyURI .
+  
+  :ObtainIDCountry a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Country"^^xsd:anyURI .
+  
+  :ObtainIDNumber a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IDNumber"^^xsd:anyURI .
+  
+  :ObtainIDType a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IDType"^^xsd:anyURI .
+  
+  :ObtainIlliteracy a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Illeteracy"^^xsd:anyURI .
+  
+  :ObtainInterestRegistration a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#InterestRegistration"^^xsd:anyURI .
+  
+  :ObtainKnowledgeCatalan a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeCatalan"^^xsd:anyURI .
+  
+  :ObtainKnowledgeLabour a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeLabourMarket"^^xsd:anyURI .
+  
+  :ObtainKnowledgeSociety a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeCatalanSociety"^^xsd:anyURI .
+  
+  :ObtainKnowledgeSpanish a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeSpanish"^^xsd:anyURI .
+  
+  :ObtainLandline a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Landline"^^xsd:anyURI .
+  
+  :ObtainLearningHandicap a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#LearningHandicap"^^xsd:anyURI .
+  
+  :ObtainMaritalStatus a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#MaritalStatus"^^xsd:anyURI .
+  
+  :ObtainMobilePhone a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#MobilePhone"^^xsd:anyURI .
+  
+  :ObtainMunicipality a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Municipality"^^xsd:anyURI .
+  
+  :ObtainName a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Name"^^xsd:anyURI .
+  
+  :ObtainNationality a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Nationality"^^xsd:anyURI .
+  
+  :ObtainNotificationPreferences a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#NotificationPreferences"^^xsd:anyURI .
+  
+  :ObtainPostCode a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PostCode"^^xsd:anyURI .
+  
+  :ObtainPreviousResidenceCatalonia a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousResidenceCatalonia"^^xsd:anyURI .
+  
+  :ObtainPreviousResidenceOther a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousResidenceOther"^^xsd:anyURI .
+  
+  :ObtainPreviousResidenceSpain a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousResidenceSpain"^^xsd:anyURI .
+  
+  :ObtainProvince a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Province"^^xsd:anyURI .
+  
+  :ObtainRegistrationYear a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#RegistrationYear"^^xsd:anyURI .
+  
+  :ObtainSMSNotifications a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SMSNotification"^^xsd:anyURI .
+  
+  :ObtainSecondSurname a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SecondSurname"^^xsd:anyURI .
+  
+  :ObtainStreetName a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetName"^^xsd:anyURI .
+  
+  :ObtainStreetNumber a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetNumber"^^xsd:anyURI .
+  
+  :ObtainStreetType a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetType"^^xsd:anyURI .
+  
+  :ObtainYearArrival a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#YearArrival"^^xsd:anyURI .
+  
+  :ObtainYearCompletion a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CompletionYear"^^xsd:anyURI .
+  
+  :InformDetailsCompletion a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateDetailsCompletionFRS> .
+  
+  :InformDetailsLanguage a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateInformDetailsLanguageFRS> .
+  
+  :InformDetailsTime a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateDetailsTimeFRS> .
+  
+  :InformDetailsValue a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateDetailsValuesFRS> .
+  
+  :InformLabourModule a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLabourModuleFRS> .
+  
+  :InformLabourModuleAddress a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLabourModuleAddressFRS> .
+  
+  :InformLabourModuleHours a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLabourModuleHoursFRS> .
+  
+  :InformLanguageModule a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLanguageModuleHoursFRS> .
+  
+  :InformLanguageModuleAddress a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLanguageModuleAddressFRS> .
+  
+  :InformLanguageModuleHours a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLanguageModuleHoursFRS> .
+  
+  :InformOverview a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateInformOverview> .
+  
+  :InformSocietyModule a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateSocietyModuleFRS> .
+  
+  :InformSocietyModuleAddress a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateSocietyModuleAddressFRS> .
+  
+  :InformSocietyModuleHours a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateSocietyModuleHoursFRS> .
+  
+  :InformTraining a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateInformTrainingFRS> .
+  
+  :InformFirstReceptionPerform a <http://www.daml.org/services/owl-s/1.1/Process.owl#Perform>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#process> :InformFirstReception;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasDataFrom> _:node1etc12hq0x3 .
+  
+  :InformFirstReception a <http://www.daml.org/services/owl-s/1.1/Process.owl#AtomicProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasOutput> :InformDetailsCompletion,
+      :InformDetailsLanguage, :InformDetailsTime, :InformDetailsValue, :InformLabourModule,
+      :InformLabourModuleAddress, :InformLabourModuleHours, :InformLanguageModule, :InformLanguageModuleAddress,
+      :InformLanguageModuleHours, :InformOverview, :InformSocietyModule, :InformSocietyModuleAddress,
+      :InformSocietyModuleHours;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> :ObtainInterestRegistration;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasNextDIP>
+      :FillFormPersonalInfo .
+  
+  :FillFormPersonalInfoPerform a <http://www.daml.org/services/owl-s/1.1/Process.owl#Perform>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#process> :FillFormPersonalInfo;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasDataFrom> _:node1etc12hq0x6,
+      _:node1etc12hq0x8, _:node1etc12hq0x10, _:node1etc12hq0x12, _:node1etc12hq0x14, _:node1etc12hq0x16,
+      _:node1etc12hq0x18, _:node1etc12hq0x20, _:node1etc12hq0x22, _:node1etc12hq0x24, _:node1etc12hq0x26,
+      _:node1etc12hq0x28, _:node1etc12hq0x30, _:node1etc12hq0x32, _:node1etc12hq0x34, _:node1etc12hq0x36,
+      _:node1etc12hq0x38 .
+  
+  :FillFormPersonalInfo a <http://www.daml.org/services/owl-s/1.1/Process.owl#AtomicProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> :ObtainBirthday, :ObtainCityOfBirth,
+      :ObtainCountryOfBirth, :ObtainEMailNotifications, :ObtainEmail, :ObtainFirstSurname,
+      :ObtainGender, :ObtainIDCountry, :ObtainIDNumber, :ObtainIDType, :ObtainLandline,
+      :ObtainMobilePhone, :ObtainName, :ObtainNationality, :ObtainNotificationPreferences,
+      :ObtainSMSNotifications, :ObtainSecondSurname;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasNextDIP>
+      :FillFormAddressInfo .
+  
+  :FillFormAddressInfoPerform a <http://www.daml.org/services/owl-s/1.1/Process.owl#Perform>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#process> :FillFormAddressInfo;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasDataFrom> _:node1etc12hq0x41,
+      _:node1etc12hq0x43, _:node1etc12hq0x45, _:node1etc12hq0x47, _:node1etc12hq0x49, _:node1etc12hq0x51,
+      _:node1etc12hq0x53, _:node1etc12hq0x55, _:node1etc12hq0x57, _:node1etc12hq0x59, _:node1etc12hq0x61 .
+  
+  :FillFormAddressInfo a <http://www.daml.org/services/owl-s/1.1/Process.owl#AtomicProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> :ObtainBuildingName,
+      :ObtainBuildingType, :ObtainDoorNumber, :ObtainEntrance, :ObtainFloorNumber, :ObtainMunicipality,
+      :ObtainPostCode, :ObtainProvince, :ObtainStreetName, :ObtainStreetNumber, :ObtainStreetType;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasNextDIP>
+      :FillFormOther .
+  
+  :FillFormOtherPerform a <http://www.daml.org/services/owl-s/1.1/Process.owl#Perform>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#process> :FillFormOther;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasDataFrom> _:node1etc12hq0x64,
+      _:node1etc12hq0x66, _:node1etc12hq0x68, _:node1etc12hq0x70, _:node1etc12hq0x72, _:node1etc12hq0x74,
+      _:node1etc12hq0x76, _:node1etc12hq0x78, _:node1etc12hq0x80 .
+  
+  :FillFormOther a <http://www.daml.org/services/owl-s/1.1/Process.owl#AtomicProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> :ObtainAsylumClaim,
+      :ObtainIlliteracy, :ObtainLearningHandicap, :ObtainMaritalStatus, :ObtainPreviousResidenceCatalonia,
+      :ObtainPreviousResidenceOther, :ObtainPreviousResidenceSpain, :ObtainRegistrationYear,
+      :ObtainYearArrival;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasNextDIP>
+      :FillFormModules .
+  
+  :FillFormModulesPerform a <http://www.daml.org/services/owl-s/1.1/Process.owl#Perform>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#process> :FillFormModules;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasDataFrom> _:node1etc12hq0x83,
+      _:node1etc12hq0x85, _:node1etc12hq0x87, _:node1etc12hq0x89, _:node1etc12hq0x91, _:node1etc12hq0x93,
+      _:node1etc12hq0x95, _:node1etc12hq0x97 .
+  
+  :FillFormModules a <http://www.daml.org/services/owl-s/1.1/Process.owl#AtomicProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasOutput> :InformTraining;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> :ObtainCoursesCatalan,
+      :ObtainCoursesLabour, :ObtainCoursesSociety, :ObtainCoursesSpanish, :ObtainKnowledgeCatalan,
+      :ObtainKnowledgeLabour, :ObtainKnowledgeSociety, :ObtainKnowledgeSpanish;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasNextDIP>
+      :FillFormCourse .
+  
+  :FillFormCoursePerform a <http://www.daml.org/services/owl-s/1.1/Process.owl#Perform>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#process> :FillFormCourse;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasDataFrom> _:node1etc12hq0x100,
+      _:node1etc12hq0x102, _:node1etc12hq0x104, _:node1etc12hq0x106 .
+  
+  :FillFormCourse a <http://www.daml.org/services/owl-s/1.1/Process.owl#AtomicProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> :ObtainCourseInstitution,
+      :ObtainCourseName, :ObtainDuration, :ObtainYearCompletion .
+  
+  :FirstReceptionServiceResult a <http://www.daml.org/services/owl-s/1.1/Process.owl#Result>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasEffect> _:node1etc12hq0x138;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#inCondition> <http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#AlwaysTrue>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#withOutput> _:node1etc12hq0x108,
+      _:node1etc12hq0x110, _:node1etc12hq0x112, _:node1etc12hq0x114, _:node1etc12hq0x116,
+      _:node1etc12hq0x118, _:node1etc12hq0x120, _:node1etc12hq0x122, _:node1etc12hq0x124,
+      _:node1etc12hq0x126, _:node1etc12hq0x128, _:node1etc12hq0x130, _:node1etc12hq0x132,
+      _:node1etc12hq0x134, _:node1etc12hq0x136 .
+}
+
+<file://C:/fakepath/RegistrationService.owl> {
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl> a owl:Ontology;
+    owl:imports <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl>,
+      <http://www.daml.org/services/owl-s/1.1/Service.owl>, <http://www.daml.org/services/owl-s/1.1/Process.owl>,
+      <http://www.daml.org/services/owl-s/1.1/Profile.owl>, <http://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl>;
+    rdfs:comment "Semantic Service Description Registration Service in Catalonia" .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationService>
+    a <http://www.daml.org/services/owl-s/1.1/Service.owl#Service>;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#describedBy> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainRegistrationServiceInfo>;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#presents> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationProfile> .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainRegistrationServiceInfo>
+    a <http://www.daml.org/services/owl-s/1.1/Process.owl#AtomicProcess>;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#describes> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationService>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasPrecondition> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationCondition>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasLocal> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainFirstSurname>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasOutput> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#InformNeedRegistration>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasInput> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressCity>,
+      <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressStreet>,
+      <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressNumber>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasResult> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationResult> .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationProfile>
+    a <http://www.daml.org/services/owl-s/1.1/Profile.owl#Profile>;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#serviceName> "Catalan Registration";
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#textDescription> "Everybody must first register at the registration office. For signing up in the population register, you have to provide the following information: i)Identity document (passport, foreigner identity card or  provisional asylum seeker document) ii) Proof of your address (property deeds, rental contract, supplies bill, letter of authorisation from the person identified as the lessee in the contract, and iii)Level of studies ";
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#contactInformation> <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Districte7>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Districte2>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Districte6>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Districte4>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Districte3>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Cambrils>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_DretsSocials>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_Districte5>,
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#OAC_PlacaDido>;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasInput> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressCity>,
+      <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressStreet>,
+      <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressNumber>;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasOutput> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#InformNeedRegistration>;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasPrecondition> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationCondition>;
+    <http://www.daml.org/services/owl-s/1.1/Profile.owl#hasResult> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationResult>;
+    <http://www.daml.org/services/owl-s/1.1/Service.owl#presentedBy> <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationService> .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationCondition>
+    a <http://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl#PDDL-Expression>;
+    <http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#expressionBody> "(not (https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Registered ?http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainFirstSurname)) " .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#InformNeedRegistration>
+    a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateInformRegistraton> .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressCity>
+    a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#City"^^xsd:anyURI .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressStreet>
+    a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetName"^^xsd:anyURI .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainResidenceAddressNumber>
+    a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetNumber"^^xsd:anyURI .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#RegistrationResult>
+    a <http://www.daml.org/services/owl-s/1.1/Process.owl#Result>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#hasEffect> _:node1etc12hq0x139 .
+  
+  <http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainFirstSurname>
+    a <http://www.daml.org/services/owl-s/1.1/Process.owl#Local>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#FirstSurname"^^xsd:anyURI .
+}
+
+<file://C:/fakepath/FirstReceptionServiceComposed.owl> {
+  :ObtainAsylumClaimComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AsylumClaim"^^xsd:anyURI .
+  
+  :ObtainBirthdayComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Birthday"^^xsd:anyURI .
+  
+  :ObtainBuildingNameComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#BuildingName"^^xsd:anyURI .
+  
+  :ObtainBuildingTypeComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#BuildingType"^^xsd:anyURI .
+  
+  :ObtainCityOfBirthComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#City"^^xsd:anyURI .
+  
+  :ObtainCountryOfBirthComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Country"^^xsd:anyURI .
+  
+  :ObtainCourseInstitutionComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseInstitution"^^xsd:anyURI .
+  
+  :ObtainCourseNameComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Course"^^xsd:anyURI .
+  
+  :ObtainCoursesCatalanComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CatalanCourse"^^xsd:anyURI .
+  
+  :ObtainCoursesLabourComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#LabourMarketCourses"^^xsd:anyURI .
+  
+  :ObtainCoursesSocietyComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CourseSociety"^^xsd:anyURI .
+  
+  :ObtainCoursesSpanishComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SpanishCourse"^^xsd:anyURI .
+  
+  :ObtainDoorNumberComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#DoorNumber"^^xsd:anyURI .
+  
+  :ObtainDurationComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Duration"^^xsd:anyURI .
+  
+  :ObtainEMailNotificationsComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#E-mailNotification"^^xsd:anyURI .
+  
+  :ObtainEmailComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#E-mail"^^xsd:anyURI .
+  
+  :ObtainEntranceComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Entrance"^^xsd:anyURI .
+  
+  :ObtainFirstSurnameComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#FirstSurname"^^xsd:anyURI .
+  
+  :ObtainFloorNumberComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#FloorNumber"^^xsd:anyURI .
+  
+  :ObtainGenderComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Gender"^^xsd:anyURI .
+  
+  :ObtainIDCountryComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Country"^^xsd:anyURI .
+  
+  :ObtainIDNumberComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IDNumber"^^xsd:anyURI .
+  
+  :ObtainIDTypeComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#IDType"^^xsd:anyURI .
+  
+  :ObtainIlliteracyComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Illeteracy"^^xsd:anyURI .
+  
+  :ObtainInterestRegistrationComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#InterestRegistration"^^xsd:anyURI .
+  
+  :ObtainKnowledgeCatalanComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeCatalan"^^xsd:anyURI .
+  
+  :ObtainKnowledgeLabourComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeLabourMarket"^^xsd:anyURI .
+  
+  :ObtainKnowledgeSocietyComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeCatalanSociety"^^xsd:anyURI .
+  
+  :ObtainKnowledgeSpanishComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#KnowledgeSpanish"^^xsd:anyURI .
+  
+  :ObtainLandlineComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Landline"^^xsd:anyURI .
+  
+  :ObtainLearningHandicapComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#LearningHandicap"^^xsd:anyURI .
+  
+  :ObtainMaritalStatusComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#MaritalStatus"^^xsd:anyURI .
+  
+  :ObtainMobilePhoneComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#MobilePhone"^^xsd:anyURI .
+  
+  :ObtainMunicipalityComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Municipality"^^xsd:anyURI .
+  
+  :ObtainNameComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Name"^^xsd:anyURI .
+  
+  :ObtainNationalityComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Nationality"^^xsd:anyURI .
+  
+  :ObtainNotificationPreferencesComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#NotificationPreferences"^^xsd:anyURI .
+  
+  :ObtainPostCodeComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PostCode"^^xsd:anyURI .
+  
+  :ObtainPreviousResidenceCataloniaComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousResidenceCatalonia"^^xsd:anyURI .
+  
+  :ObtainPreviousResidenceOtherComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousResidenceOther"^^xsd:anyURI .
+  
+  :ObtainPreviousResidenceSpainComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#PreviousResidenceSpain"^^xsd:anyURI .
+  
+  :ObtainProvinceComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Province"^^xsd:anyURI .
+  
+  :ObtainRegistrationYearComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#RegistrationYear"^^xsd:anyURI .
+  
+  :ObtainSMSNotificationsComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SMSNotification"^^xsd:anyURI .
+  
+  :ObtainSecondSurnameComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#SecondSurname"^^xsd:anyURI .
+  
+  :ObtainStreetNameComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetName"^^xsd:anyURI .
+  
+  :ObtainStreetNumberComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetNumber"^^xsd:anyURI .
+  
+  :ObtainStreetTypeComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#StreetType"^^xsd:anyURI .
+  
+  :ObtainYearArrivalComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#YearArrival"^^xsd:anyURI .
+  
+  :ObtainYearCompletionComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Input>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#CompletionYear"^^xsd:anyURI .
+  
+  :InformDetailsCompletionComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateDetailsCompletionFRS> .
+  
+  :InformDetailsLanguageComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateInformDetailsLanguageFRS> .
+  
+  :InformDetailsTimeComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateDetailsTimeFRS> .
+  
+  :InformDetailsValueComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateDetailsValuesFRS> .
+  
+  :InformLabourModuleComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLabourModuleFRS> .
+  
+  :InformLabourModuleAddressComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLabourModuleAddressFRS> .
+  
+  :InformLabourModuleHoursComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLabourModuleHoursFRS> .
+  
+  :InformLanguageModuleComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLanguageModuleFRS> .
+  
+  :InformLanguageModuleAddressComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLanguageModuleAddressFRS> .
+  
+  :InformLanguageModuleHoursComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateLanguageModuleHoursFRS> .
+  
+  :InformOverviewComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateInformOverview> .
+  
+  :InformSocietyModuleComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateSocietyModuleFRS> .
+  
+  :InformSocietyModuleAddressComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateSocietyModuleAddressFRS> .
+  
+  :InformSocietyModuleHoursComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateSocietyModuleHoursFRS> .
+  
+  :InformTrainingComposed a <http://www.daml.org/services/owl-s/1.1/Process.owl#Output>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#parameterType> "https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Template"^^xsd:anyURI;
+    <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#hasSlotTemplate>
+      <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#TemplateInformTrainingFRS> .
+  
+  _:node1etc12hq0x1 a <http://www.daml.org/services/owl-s/1.1/Process.owl#Sequence>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#components> _:node1etc12hq0x2 .
+  
+  _:node1etc12hq0x2 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ControlConstructList>;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#first> :InformFirstReceptionPerform;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#rest> _:node1etc12hq0x5 .
+  
+  _:node1etc12hq0x3 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainInterestRegistration;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x4 .
+  
+  _:node1etc12hq0x4 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainInterestRegistrationComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x5 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ControlConstructList>;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#first> :FillFormPersonalInfoPerform;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#rest> _:node1etc12hq0x40 .
+  
+  _:node1etc12hq0x6 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainName;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x7 .
+  
+  _:node1etc12hq0x7 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainNameComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x8 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainFirstSurname;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x9 .
+  
+  _:node1etc12hq0x9 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainFirstSurnameComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x10 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainSecondSurname;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x11 .
+  
+  _:node1etc12hq0x11 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainSecondSurnameComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x12 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainIDNumber;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x13 .
+  
+  _:node1etc12hq0x13 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainIDNumberComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x14 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainIDType;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x15 .
+  
+  _:node1etc12hq0x15 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainIDTypeComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x16 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainIDCountry;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x17 .
+  
+  _:node1etc12hq0x17 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainIDCountryComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x18 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainGender;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x19 .
+  
+  _:node1etc12hq0x19 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainGenderComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x20 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainBirthday;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x21 .
+  
+  _:node1etc12hq0x21 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainBirthdayComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x22 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCountryOfBirth;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x23 .
+  
+  _:node1etc12hq0x23 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCountryOfBirthComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x24 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCityOfBirth;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x25 .
+  
+  _:node1etc12hq0x25 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCityOfBirthComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x26 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainNationality;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x27 .
+  
+  _:node1etc12hq0x27 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainNationalityComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x28 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainLandline;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x29 .
+  
+  _:node1etc12hq0x29 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainLandlineComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x30 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainMobilePhone;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x31 .
+  
+  _:node1etc12hq0x31 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainMobilePhoneComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x32 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainEmail;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x33 .
+  
+  _:node1etc12hq0x33 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainEmailComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x34 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainNotificationPreferences;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x35 .
+  
+  _:node1etc12hq0x35 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainNotificationPreferencesComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x36 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainSMSNotifications;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x37 .
+  
+  _:node1etc12hq0x37 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainSMSNotificationsComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x38 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainEMailNotifications;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x39 .
+  
+  _:node1etc12hq0x39 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainEMailNotificationsComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x40 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ControlConstructList>;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#first> :FillFormAddressInfoPerform;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#rest> _:node1etc12hq0x63 .
+  
+  _:node1etc12hq0x41 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainStreetType;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x42 .
+  
+  _:node1etc12hq0x42 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainStreetTypeComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x43 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainStreetName;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x44 .
+  
+  _:node1etc12hq0x44 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainStreetNameComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x45 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainStreetNumber;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x46 .
+  
+  _:node1etc12hq0x46 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainStreetNumberComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x47 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainBuildingName;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x48 .
+  
+  _:node1etc12hq0x48 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainBuildingNameComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x49 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainEntrance;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x50 .
+  
+  _:node1etc12hq0x50 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainEntranceComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x51 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainBuildingType;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x52 .
+  
+  _:node1etc12hq0x52 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainBuildingTypeComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x53 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainFloorNumber;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x54 .
+  
+  _:node1etc12hq0x54 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainFloorNumberComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x55 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainDoorNumber;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x56 .
+  
+  _:node1etc12hq0x56 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainDoorNumberComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x57 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainPostCode;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x58 .
+  
+  _:node1etc12hq0x58 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainPostCodeComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x59 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainProvince;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x60 .
+  
+  _:node1etc12hq0x60 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainProvinceComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x61 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainMunicipality;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x62 .
+  
+  _:node1etc12hq0x62 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainMunicipalityComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x63 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ControlConstructList>;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#first> :FillFormOtherPerform;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#rest> _:node1etc12hq0x82 .
+  
+  _:node1etc12hq0x64 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainMaritalStatus;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x65 .
+  
+  _:node1etc12hq0x65 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainMaritalStatusComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x66 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainAsylumClaim;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x67 .
+  
+  _:node1etc12hq0x67 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainAsylumClaimComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x68 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainYearArrival;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x69 .
+  
+  _:node1etc12hq0x69 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainYearArrivalComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x70 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainPreviousResidenceCatalonia;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x71 .
+  
+  _:node1etc12hq0x71 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainPreviousResidenceCataloniaComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x72 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainPreviousResidenceSpain;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x73 .
+  
+  _:node1etc12hq0x73 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainPreviousResidenceSpainComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x74 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainPreviousResidenceOther;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x75 .
+  
+  _:node1etc12hq0x75 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainPreviousResidenceOtherComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x76 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainRegistrationYear;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x77 .
+  
+  _:node1etc12hq0x77 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainRegistrationYearComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x78 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainLearningHandicap;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x79 .
+  
+  _:node1etc12hq0x79 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainLearningHandicapComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x80 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainIlliteracy;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x81 .
+  
+  _:node1etc12hq0x81 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainIlliteracyComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x82 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ControlConstructList>;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#first> :FillFormModulesPerform;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#rest> _:node1etc12hq0x99 .
+  
+  _:node1etc12hq0x83 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainKnowledgeCatalan;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x84 .
+  
+  _:node1etc12hq0x84 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainKnowledgeCatalanComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x85 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCoursesCatalan;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x86 .
+  
+  _:node1etc12hq0x86 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCoursesCatalanComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x87 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainKnowledgeSpanish;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x88 .
+  
+  _:node1etc12hq0x88 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainKnowledgeSpanishComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x89 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCoursesSpanish;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x90 .
+  
+  _:node1etc12hq0x90 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCoursesSpanishComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x91 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainKnowledgeLabour;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x92 .
+  
+  _:node1etc12hq0x92 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainKnowledgeLabourComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x93 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCoursesLabour;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x94 .
+  
+  _:node1etc12hq0x94 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCoursesLabourComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x95 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainKnowledgeSociety;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x96 .
+  
+  _:node1etc12hq0x96 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainKnowledgeSocietyComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x97 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCoursesSociety;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x98 .
+  
+  _:node1etc12hq0x98 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCoursesSocietyComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x99 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ControlConstructList>;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#first> :FillFormCoursePerform;
+    <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#rest> <http://www.daml.org/services/owl-s/1.1/generic/ObjectList.owl#nil> .
+  
+  _:node1etc12hq0x100 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCourseName;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x101 .
+  
+  _:node1etc12hq0x101 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCourseNameComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x102 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainCourseInstitution;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x103 .
+  
+  _:node1etc12hq0x103 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainCourseInstitutionComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x104 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainYearCompletion;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x105 .
+  
+  _:node1etc12hq0x105 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainYearCompletionComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x106 a <http://www.daml.org/services/owl-s/1.1/Process.owl#InputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :ObtainDuration;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x107 .
+  
+  _:node1etc12hq0x107 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :ObtainDurationComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> <http://www.daml.org/services/owl-s/1.1/Process.owl#TheParentPerform> .
+  
+  _:node1etc12hq0x108 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformOverviewComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x109 .
+  
+  _:node1etc12hq0x109 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformOverview;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x110 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformLanguageModuleComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x111 .
+  
+  _:node1etc12hq0x111 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformLanguageModule;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x112 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformLanguageModuleAddressComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x113 .
+  
+  _:node1etc12hq0x113 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformLanguageModuleAddress;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x114 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformLanguageModuleHoursComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x115 .
+  
+  _:node1etc12hq0x115 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformLanguageModuleHours;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x116 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformLabourModuleComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x117 .
+  
+  _:node1etc12hq0x117 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformLabourModule;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x118 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformLabourModuleAddressComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x119 .
+  
+  _:node1etc12hq0x119 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformLabourModuleAddress;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x120 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformLabourModuleHoursComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x121 .
+  
+  _:node1etc12hq0x121 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformLabourModuleHours;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x122 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformSocietyModuleComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x123 .
+  
+  _:node1etc12hq0x123 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformSocietyModule;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x124 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformSocietyModuleAddressComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x125 .
+  
+  _:node1etc12hq0x125 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformSocietyModuleAddress;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x126 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformSocietyModuleHoursComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x127 .
+  
+  _:node1etc12hq0x127 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformSocietyModuleHours;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x128 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformDetailsTimeComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x129 .
+  
+  _:node1etc12hq0x129 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformDetailsTime;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x130 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformDetailsCompletionComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x131 .
+  
+  _:node1etc12hq0x131 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformDetailsCompletion;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x132 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformDetailsLanguageComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x133 .
+  
+  _:node1etc12hq0x133 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformDetailsLanguage;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x134 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformDetailsValueComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x135 .
+  
+  _:node1etc12hq0x135 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformDetailsValue;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :InformFirstReceptionPerform .
+  
+  _:node1etc12hq0x136 a <http://www.daml.org/services/owl-s/1.1/Process.owl#OutputBinding>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#toParam> :InformTrainingComposed;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#valueSource> _:node1etc12hq0x137 .
+  
+  _:node1etc12hq0x137 a <http://www.daml.org/services/owl-s/1.1/Process.owl#ValueOf>;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#theVar> :InformTraining;
+    <http://www.daml.org/services/owl-s/1.1/Process.owl#fromProcess> :FillFormModulesPerform .
+  
+  _:node1etc12hq0x138 a <https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl#PDDL-Expression>;
+    <http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#expressionBody> """(and 
+								(https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AccessCatalanTraining ?http://localhost:8080/WelcomeServicesOffers/FirstReceptionService.owl#ObtainFirstSurnameComposed)
+								(https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AccessSpanishTraining ?http://localhost:8080/WelcomeServicesOffers/FirstReceptionService.owl#ObtainFirstSurnameComposed)
+								(https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AccessLabourTraining ?http://localhost:8080/WelcomeServicesOffers/FirstReceptionService.owl#ObtainFirstSurnameComposed)
+								(https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#AccessSocietyTraining ?http://localhost:8080/WelcomeServicesOffers/FirstReceptionService.owl#ObtainFirstSurnameComposed)
+							)""" .
+}
+
+<file://C:/fakepath/RegistrationService.owl> {
+  _:node1etc12hq0x139 a <http://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/PDDLExpression.owl#PDDL-Expression>;
+    <http://www.daml.org/services/owl-s/1.1/generic/Expression.owl#expressionBody> "(https://raw.githubusercontent.com/gtzionis/WelcomeOntology/main/welcome.ttl#Registered ?http://localhost:8080/WelcomeServicesOffers/RegistrationService.owl#ObtainFirstSurname) " .
+}
